@@ -30,5 +30,4 @@ jobs:
           git commit -m "Bump flux to ${{ steps.update.outputs.flux_version }}"
       - name: Create Pull Request
         run: |
-          gh auth refresh -s project
           gh pr create --fill-first
