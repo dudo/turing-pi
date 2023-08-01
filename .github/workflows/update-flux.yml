@@ -22,14 +22,8 @@ jobs:
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git config --global user.name "github-actions[bot]"
       - name: Checkout branch
-        id: checkout
         run: |
-          git checkout $BRANCH
-          git pull
-      - name: Create branch
-        if: failure() && steps.checkout.conclusion == 'failure'
-        run: |
-          git checkout -b $BRANCH
+          (git checkout $BRANCH && git pull) || git checkout -b $BRANCH
       - name: Check for updates
         run: |
           flux install \
