@@ -28,13 +28,6 @@ brew bundle
 export GITHUB_TOKEN=<your-token>
 ```
 
-### kubectl
-
-Kubernetes command line tool.
-
-<https://docs.docker.com/get-started/orchestration>
-<https://kubernetes.io/docs/reference/kubectl/>
-
 ## Usage
 
 ### Flux
