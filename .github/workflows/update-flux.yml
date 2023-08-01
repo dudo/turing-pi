@@ -41,7 +41,7 @@ jobs:
           git add .
           git commit -am "Bump flux to ${{ steps.update.outputs.flux_version }}" || git status
           git push -u origin HEAD
-      - name: Create Pull Request
+      - name: GitHub Pull Request
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
