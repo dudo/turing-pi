@@ -9,5 +9,5 @@ spec:
     kind: GitRepository
     name: flux-system
     namespace: flux-system
-  path: ./charts/overlays/develop
+  path: ./charts/overlays/local
   prune: true

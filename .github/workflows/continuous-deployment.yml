@@ -1,0 +1,20 @@
+name: Continuous Deployment
+
+on:
+  create:
+
+jobs:
+  pull-request:
+    if: github.ref_name == 'continuous-deployment'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        name: checkout
+      - name: Set up Git
+        run: |
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git config --global user.name "github-actions[bot]"
+      - name: Create Pull Request
+        run: |
+          gh auth refresh -s project
+          gh pr create --fill-first

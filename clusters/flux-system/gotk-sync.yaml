@@ -11,7 +11,7 @@ spec:
     branch: main
   secretRef:
     name: flux-system
-  url: ssh://git@github.com/compada/cd
+  url: ssh://git@github.com/dudo/turing-pi
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
@@ -20,7 +20,7 @@ metadata:
   namespace: flux-system
 spec:
   interval: 1h
-  path: ./clusters/overlays/develop
+  path: ./clusters/overlays/local
   prune: true
   sourceRef:
     kind: GitRepository

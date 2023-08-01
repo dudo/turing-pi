@@ -11,5 +11,5 @@ spec:
     kind: GitRepository
     name: flux-system
     namespace: flux-system
-  path: ./notifications/overlays/develop
+  path: ./notifications/overlays/local
   prune: true

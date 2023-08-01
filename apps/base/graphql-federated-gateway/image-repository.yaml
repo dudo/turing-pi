@@ -6,5 +6,5 @@ metadata:
 spec:
   secretRef:
     name: registry-auth
-  image: ghcr.io/compada/graphql-federated-gateway
+  image: ghcr.io/dudo/graphql-federated-gateway
   interval: 1h

@@ -50,7 +50,7 @@ flux bootstrap github \
   --repository=turing-pi \
   --private=false \
   --personal=true \
-  --path=clusters/overlays/develop
+  --path=clusters/overlays/local
 ```
 
 #### Useful Commands

@@ -13,6 +13,8 @@ spec:
     checkout:
       ref:
         branch: main
+    push:
+      branch: continuous-deployment
     commit:
       messageTemplate: |
         Deploying `{{ .AutomationObject }}`

@@ -7,7 +7,7 @@ spec:
   interval: 10m
   secretRef:
     name: git-auth
-  url: https://github.com/compada/graphql-federated-gateway
+  url: https://github.com/dudo/graphql-federated-gateway
   ref:
     branch: main
 ---
@@ -21,7 +21,7 @@ spec:
     kind: GitRepository
     name: graphql-federated-gateway
     namespace: flux-system
-  path: ./deploy/overlays/develop
+  path: ./deploy/overlays/local
   prune: true
   wait: true
   timeout: 5m
