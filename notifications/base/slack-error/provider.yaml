@@ -1,0 +1,10 @@
+---
+apiVersion: notification.toolkit.fluxcd.io/v1beta1
+kind: Provider
+metadata:
+  name: slack-error
+spec:
+  type: slack
+  channel: dev-deployment-alerts
+  secretRef:
+    name: slack-webhook-deployment-alerts

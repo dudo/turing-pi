@@ -1,0 +1,10 @@
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta1
+kind: ImageRepository
+metadata:
+  name: graphql-federated-gateway
+spec:
+  secretRef:
+    name: registry-auth
+  image: ghcr.io/compada/graphql-federated-gateway
+  interval: 1h

@@ -1,0 +1,14 @@
+---
+kubeProxyReplacement: true
+k8sServiceHost: "192.168.4.53"
+k8sServicePort: "6443"
+loadBalancer:
+  mode: dsr
+containerRuntime:
+  integration: crio
+hubble:
+  enabled: true
+  relay:
+    enabled: true
+  ui:
+    enabled: true

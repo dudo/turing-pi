@@ -1,0 +1,85 @@
+apiVersion: k0sctl.k0sproject.io/v1beta1
+kind: Cluster
+metadata:
+  name: turingpicluster
+spec:
+  # https://github.com/k0sproject/k0sctl#host-fields
+  hosts:
+    # - ssh:
+    #     address: 192.168.4.54
+    #     user: dudo
+    #     port: 22
+    #     keyPath: ~/.ssh/id_rsa
+    #   role: controller+worker
+    #   noTaints: true
+    #   installFlags:
+    #     - --cri-socket remote:unix:///var/run/crio/crio.sock
+    #     - --profile crio-compatibility
+    # - ssh:
+    #     address: 192.168.4.55
+    #     user: dudo
+    #     port: 22
+    #     keyPath: ~/.ssh/id_rsa
+    #   role: controller+worker
+    #   noTaints: true
+    #   installFlags:
+    #     - --cri-socket remote:unix:///var/run/crio/crio.sock
+    #     - --profile crio-compatibility
+    # - ssh:
+    #     address: 192.168.4.56
+    #     user: dudo
+    #     port: 22
+    #     keyPath: ~/.ssh/id_rsa
+    #   role: controller+worker
+    #   noTaints: true
+    #   installFlags:
+    #     - --cri-socket remote:unix:///var/run/crio/crio.sock
+    #     - --profile crio-compatibility
+    - ssh:
+        address: 192.168.4.53
+        user: dudo
+        port: 22
+        keyPath: ~/.ssh/id_rsa
+      role: single
+      installFlags:
+        - --cri-socket remote:unix:///var/run/crio/crio.sock
+        - --profile crio-compatibility
+  k0s:
+    version: 1.27.4+k0s.0
+    dynamicConfig: false
+    config:
+      apiVersion: k0s.k0sproject.io/v1beta1
+      kind: Cluster
+      metadata:
+        name: k0s
+      spec:
+        api:
+          k0sApiPort: 9443
+          port: 6443
+        installConfig:
+          users:
+            etcdUser: etcd
+            kineUser: kube-apiserver
+            konnectivityUser: konnectivity-server
+            kubeAPIserverUser: kube-apiserver
+            kubeSchedulerUser: kube-scheduler
+        konnectivity:
+          adminPort: 8133
+          agentPort: 8132
+        network:
+          kubeProxy:
+            disabled: false
+            mode: iptables
+          podCIDR: 10.244.0.0/16
+          provider: kuberouter
+          serviceCIDR: 10.96.0.0/12
+        podSecurityPolicy:
+          defaultPolicy: 00-k0s-privileged
+        storage:
+          type: etcd
+        telemetry:
+          enabled: false
+        workerProfiles:
+          - name: crio-compatibility
+            values:
+              cgroupDriver: systemd

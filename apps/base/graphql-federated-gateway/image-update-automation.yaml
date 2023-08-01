@@ -1,0 +1,25 @@
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta1
+kind: ImageUpdateAutomation
+metadata:
+  name: graphql-federated-gateway
+spec:
+  interval: 10m
+  sourceRef:
+    kind: GitRepository
+    name: graphql-federated-gateway
+    namespace: flux-system
+  git:
+    checkout:
+      ref:
+        branch: main
+    commit:
+      messageTemplate: |
+        Deploying `{{ .AutomationObject }}`
+
+        {{ range $_, $url := .Updated.Images -}}
+        {{ $url }}
+        {{ end -}}
+      author:
+        email: brett@dudo.io # TODO: change this to a bot user
+        name: DudoBot

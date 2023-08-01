@@ -1,0 +1,37 @@
+---
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - ../../flux-system
+  - ../../base
+patchesStrategicMerge:
+  - |-
+    kind: Kustomization
+    metadata:
+      name: flux-system
+    spec:
+      path: ./clusters/overlays/production
+  - |-
+    kind: Kustomization
+    metadata:
+      name: charts
+    spec:
+      path: ./charts/overlays/production
+  - |-
+    kind: Kustomization
+    metadata:
+      name: secrets
+    spec:
+      path: ./secrets/overlays/production
+  - |-
+    kind: Kustomization
+    metadata:
+      name: apps
+    spec:
+      path: ./apps/overlays/production
+  - |-
+    kind: Kustomization
+    metadata:
+      name: notifications
+    spec:
+      path: ./notifications/overlays/production

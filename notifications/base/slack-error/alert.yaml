@@ -1,0 +1,29 @@
+---
+apiVersion: notification.toolkit.fluxcd.io/v1beta1
+kind: Alert
+metadata:
+  name: slack-error
+spec:
+  summary: Kubernetes cluster
+  providerRef:
+    name: slack-error
+  eventSeverity: error
+  eventSources:
+    - kind: GitRepository
+      name: '*'
+    - kind: Kustomization
+      name: '*'
+    - kind: HelmRepository
+      name: '*'
+    - kind: HelmRelease
+      name: '*'
+    - kind: HelmChart
+      name: '*'
+    - kind: ImagePolicy
+      name: '*'
+    - kind: ImageRepository
+      name: '*'
+    - kind: ImageUpdateAutomation
+      name: '*'
+  exclusionList:
+    - "waiting.*socket"

@@ -1,0 +1,24 @@
+.DS_Store
+
+# Ignore editor workspace files
+.vscode
+.sublime-*
+.atom
+.editorconfig
+.idea
+.nyc_output
+coverage
+*.lcov
+*.swp
+*.swo
+
+# Ignore all logfiles and tempfiles.
+/log/*
+/tmp/*
+!/log/.keep
+!/tmp/.keep
+
+# Ignore overrides
+.env
+.env.local
+compose.override.yml
