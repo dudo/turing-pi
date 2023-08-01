@@ -8,6 +8,8 @@ on:
 jobs:
   components:
     runs-on: ubuntu-latest
+    env:
+      BRANCH: update-flux
     steps:
       - name: Check out code
         uses: actions/checkout@v3
@@ -23,7 +25,7 @@ jobs:
         run: |
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git config --global user.name "github-actions[bot]"
-          git checkout -b update-flux
+          git checkout -b $BRANCH
       - name: Commit
         run: |
           git add .
@@ -32,4 +34,4 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          gh pr create --fill --head ${{ github.ref_name }} --label CD
+          gh pr create --fill --head $BRANCH --label CD
