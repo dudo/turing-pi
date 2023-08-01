@@ -13,6 +13,8 @@ jobs:
     steps:
       - name: Check out code
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
       - name: Setup Flux CLI
         uses: fluxcd/flux2/action@main
       - name: Check for updates
@@ -25,14 +27,12 @@ jobs:
         run: |
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git config --global user.name "github-actions[bot]"
-          git checkout -b $BRANCH
-          git branch --set-upstream-to=origin/$BRANCH $BRANCH
-          git pull
+          (git checkout $BRANCH && git pull) || git checkout -b $BRANCH
       - name: Commit
         run: |
           git add .
           git commit -am "Bump flux to ${{ steps.update.outputs.flux_version }}"
-          git push origin HEAD
+          git push -u origin HEAD
       - name: Create Pull Request
         env:
           GH_TOKEN: ${{ github.token }}
