@@ -37,10 +37,15 @@ jobs:
             --export > ./clusters/flux-system/gotk-components.yaml
           echo "flux_version=$(flux -v)" >> $GITHUB_OUTPUT
       - name: Commit
+        id: commit
         run: |
           git add .
           git commit -am "Bump flux to ${{ steps.update.outputs.flux_version }}"
           git push -u origin HEAD
+      - name: Status
+        if: ${{ failure() && steps.commit.conclusion == 'failure' }}
+        run: |
+          git status
       - name: Create Pull Request
         env:
           GH_TOKEN: ${{ github.token }}
