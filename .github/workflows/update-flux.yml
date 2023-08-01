@@ -23,11 +23,19 @@ jobs:
           flux install \
             --export > ./clusters/flux-system/gotk-components.yaml
           echo "flux_version=$(flux -v)" >> $GITHUB_OUTPUT
-      - name: Set up Git
+      - name: Configure Git
         run: |
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git config --global user.name "github-actions[bot]"
-          (git checkout $BRANCH && git pull) || git checkout -b $BRANCH
+      - name: Checkout Branch
+        id: checkout
+        run: |
+          git checkout $BRANCH
+          git pull
+      - name: Create Branch
+        if: ${{ failure() && steps.checkout.conclusion == 'failure' }}
+        run: |
+          git checkout -b $BRANCH
       - name: Commit
         run: |
           git add .
