@@ -18,7 +18,7 @@ jobs:
         run: |
           flux install \
             --export > ./clusters/flux-system/gotk-components.yaml
-          echo "::set-output name=flux_version::$(flux -v)"
+          echo "flux_version=$(flux -v)" >> $GITHUB_OUTPUT
       - name: Set up Git
         run: |
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
