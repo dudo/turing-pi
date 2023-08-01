@@ -28,7 +28,7 @@ jobs:
         run: |
           flux install \
             --export > ./clusters/flux-system/gotk-components.yaml
-          echo "flux_version=$(flux -v)" >> $GITHUB_OUTPUT
+          echo "flux_version=$(flux -v)" >> $GITHUB_ENV
       - name: Commit
         continue-on-error: true
         run: |
