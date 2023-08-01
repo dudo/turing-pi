@@ -25,18 +25,19 @@ jobs:
         run: |
           (git checkout $BRANCH && git pull) || git checkout -b $BRANCH
       - name: Check for updates
+        id: update
         run: |
           flux install \
             --export > ./clusters/flux-system/gotk-components.yaml
-          echo "flux_version=$(flux -v)" >> $GITHUB_ENV
+          echo "flux_version=$(flux -v)" >> $GITHUB_OUTPUT
       - name: Commit
         continue-on-error: true
         run: |
           git add .
-          git commit -am "Bump flux to ${{ env.flux_version }}"
+          git commit -am "Bump flux to ${{ steps.update.outputs.flux_version }}"
           git push -u origin HEAD
       - name: GitHub Pull Request
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          gh pr create --fill --label CD || gh pr status
+          gh pr create --fill-first --label CD || gh pr status
