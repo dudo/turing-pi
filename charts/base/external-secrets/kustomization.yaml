@@ -9,7 +9,6 @@ configMapGenerator:
 components:
   - ../../components/configurations
 resources:
-  - namespace.yaml
   - deployment-crds.yaml
   - release.yaml
   - service-account.yaml

@@ -16,6 +16,7 @@ spec:
       version: "0.14.0"
   interval: 1h
   install:
+    createNamespace: true
     remediation:
       retries: 3
   valuesFrom:
