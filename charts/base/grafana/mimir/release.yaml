@@ -8,12 +8,12 @@ spec:
   targetNamespace: grafana
   chart:
     spec:
-      chart: mimir
+      chart: mimir-distributed
       sourceRef:
         kind: HelmRepository
         name: grafana
         namespace: flux-system
-      version: "1.14.0"
+      version: "2.9.0"
   interval: 1h
   install:
     remediation:

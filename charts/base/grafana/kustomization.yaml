@@ -7,4 +7,3 @@ resources:
   - loki
   - mimir
   - tempo
-  - phlare

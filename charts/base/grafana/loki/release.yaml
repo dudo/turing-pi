@@ -8,12 +8,12 @@ spec:
   targetNamespace: grafana
   chart:
     spec:
-      chart: loki
+      chart: loki-distributed
       sourceRef:
         kind: HelmRepository
         name: grafana
         namespace: flux-system
-      version: "1.14.0"
+      version: "5.9.2"
   interval: 1h
   install:
     remediation:
