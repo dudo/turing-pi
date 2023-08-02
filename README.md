@@ -35,7 +35,7 @@ An open-source system for automating deployment, scaling, and management of cont
 
 Used to **pull** repository changes into kubernetes clusters.
 
-<https://fluxcd.io/docs/guides/repository-structure/#repo-per-app>
+<https://fluxcd.io>
 
 ### Brew
 
