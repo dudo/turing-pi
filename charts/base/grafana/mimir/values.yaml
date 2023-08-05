@@ -1,1 +1,23 @@
 ---
+alertmanager:
+  enabled: false
+
+ingester:
+  zoneAwareReplication:
+    enabled: false
+
+store_gateway:
+  zoneAwareReplication:
+    enabled: false
+
+memcachedExporter:
+  enabled: false
+
+rollout_operator:
+  enabled: false
+
+minio:
+  enabled: false
+
+nginx:
+  enabled: false
