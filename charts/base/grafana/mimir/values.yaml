@@ -16,8 +16,18 @@ memcachedExporter:
 rollout_operator:
   enabled: false
 
-minio:
-  enabled: false
-
 nginx:
+  enabled: false
+gateway:
+  enabledNonEnterprise: true
+
+metaMonitoring:
+  dashboards:
+    enabled: true
+  serviceMonitor:
+    enabled: true
+  grafanaAgent:
+    enabled: true
+
+minio:
   enabled: false
