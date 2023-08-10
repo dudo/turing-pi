@@ -13,8 +13,8 @@ spec:
     #   role: controller+worker
     #   noTaints: true
     #   installFlags:
-    #     - --cri-socket remote:unix:///var/run/crio/crio.sock
-    #     - --profile crio-compatibility
+
+    #     - --profile cri-compatibility
     # - ssh:
     #     address: 192.168.4.55
     #     user: dudo
@@ -23,8 +23,8 @@ spec:
     #   role: controller+worker
     #   noTaints: true
     #   installFlags:
-    #     - --cri-socket remote:unix:///var/run/crio/crio.sock
-    #     - --profile crio-compatibility
+
+    #     - --profile cri-compatibility
     # - ssh:
     #     address: 192.168.4.56
     #     user: dudo
@@ -33,17 +33,14 @@ spec:
     #   role: controller+worker
     #   noTaints: true
     #   installFlags:
-    #     - --cri-socket remote:unix:///var/run/crio/crio.sock
-    #     - --profile crio-compatibility
+
+    #     - --profile cri-compatibility
     - ssh:
         address: 192.168.4.53
         user: dudo
         port: 22
         keyPath: ~/.ssh/id_rsa
       role: single
-      installFlags:
-        - --cri-socket remote:unix:///var/run/crio/crio.sock
-        - --profile crio-compatibility
   k0s:
     version: 1.27.4+k0s.0
     dynamicConfig: false
@@ -79,7 +76,3 @@ spec:
           type: etcd
         telemetry:
           enabled: false
-        workerProfiles:
-          - name: crio-compatibility
-            values:
-              cgroupDriver: systemd
