@@ -13,8 +13,7 @@ spec:
     #   role: controller+worker
     #   noTaints: true
     #   installFlags:
-
-    #     - --profile cri-compatibility
+    #     - --labels="turingpi.com/GPIO=true,turingpi.com/PCIe1=true,turingpi.com/HDMI=true,turingpi.com/DSI=true"
     # - ssh:
     #     address: 192.168.4.55
     #     user: dudo
@@ -23,8 +22,7 @@ spec:
     #   role: controller+worker
     #   noTaints: true
     #   installFlags:
-
-    #     - --profile cri-compatibility
+    #     - --labels="turingpi.com/PCIe2=true"
     # - ssh:
     #     address: 192.168.4.56
     #     user: dudo
@@ -33,14 +31,15 @@ spec:
     #   role: controller+worker
     #   noTaints: true
     #   installFlags:
-
-    #     - --profile cri-compatibility
+    #     - --labels="turingpi.com/SATA=true"
     - ssh:
         address: 192.168.4.53
         user: dudo
         port: 22
         keyPath: ~/.ssh/id_rsa
       role: single
+      # installFlags:
+      #   - --labels="turingpi.com/USB=true"
   k0s:
     version: 1.27.4+k0s.0
     dynamicConfig: false
