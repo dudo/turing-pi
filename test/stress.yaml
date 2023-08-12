@@ -1,0 +1,19 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: stress-pod
+spec:
+  runtimeClassName: nvidia
+  restartPolicy: OnFailure
+  containers:
+    - name: tensor-container
+      image: dudo/test_cuda
+      imagePullPolicy: Always
+      resources:
+        limits:
+          nvidia.com/gpu: "1"
+  tolerations:
+    - key: nvidia.com/gpu
+      operator: Exists
+      effect: NoSchedule

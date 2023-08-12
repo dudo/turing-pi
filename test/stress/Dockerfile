@@ -41,16 +41,19 @@ RUN apt-get update && apt-get install -y \
     python3-pip \
     libopenblas-dev \
     curl \
-    wget \
-    stress
+    wget
 
-# Install Python packages
-RUN pip3 install --upgrade pip && \
-    pip3 install tensorflow && \
-    pip3 install torch
+ENV REPO_URL https://developer.download.nvidia.cn/compute/redist/jp/
 
-# Copy the provided Python script into the Docker image
+RUN \
+    JETPACK_VERSION=$(curl -s $REPO_URL | grep -oP 'v\K[0-9]+(?=/)' | sed 's/./&\./g' | rev | cut -c2- | rev | sort -V | sed 's/\.//g' | tail -n 1) && \
+    TENSORFLOW_REPO_URL=${REPO_URL}v${JETPACK_VERSION}/tensorflow/ && \
+    TENSORFLOW_INSTALL=$TENSORFLOW_REPO_URL$(curl -s $TENSORFLOW_REPO_URL | grep -oP 'tensorflow-.*?\.whl' | sort -V | tail -n 1) && \
+    TORCH_REPO_URL=${REPO_URL}v${JETPACK_VERSION}/pytorch/ && \
+    TORCH_INSTALL=$TORCH_REPO_URL$(curl -s $TORCH_REPO_URL | grep -oP 'torch-.*?\.whl' | sort -V | tail -n 1) && \
+    pip3 install --upgrade --no-cache $TENSORFLOW_INSTALL && \
+    pip3 install --upgrade --no-cache $TORCH_INSTALL
+
 COPY test.py /test.py
 
-# Set command to run the script on container startup
 CMD ["python3", "/test.py"]
