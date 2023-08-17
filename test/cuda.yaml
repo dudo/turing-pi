@@ -5,11 +5,11 @@ metadata:
   name: cuda-pod
 spec:
   runtimeClassName: nvidia
-  restartPolicy: OnFailure
+  restartPolicy: Never
   containers:
     - name: cuda-container
-      image: nvcr.io/nvidia/k8s/cuda-sample:vectoradd-cuda11.2.1
-      imagePullPolicy: Always
+      image: dudo/device_query:11.4
+      imagePullPolicy: IfNotPresent
       resources:
         limits:
           nvidia.com/gpu: "1"
