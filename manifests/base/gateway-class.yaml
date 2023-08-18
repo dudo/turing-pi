@@ -1,0 +1,7 @@
+---
+apiVersion: networking.x-k8s.io/v1alpha1
+kind: GatewayClass
+metadata:
+  name: cilium-gateway-class
+spec:
+  controller: <ingress-controller-name> # TODO: cilium controller

@@ -1,0 +1,9 @@
+---
+apiVersion: cert-manager.io/v1
+kind: Issuer
+metadata:
+  name: ca-issuer
+  namespace: flux-system
+spec:
+  ca:
+    secretName: ca-key-pair

@@ -1,0 +1,45 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: zigbee2mqtt-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: zigbee2mqtt
+  template:
+    metadata:
+      labels:
+        app: zigbee2mqtt
+    spec:
+      containers:
+        - name: zigbee2mqtt
+          image: koenkk/zigbee2mqtt
+          ports:
+            - containerPort: 8080
+          env:
+            - name: TZ
+              value: "America/Los_Angeles"
+          volumeMounts:
+            - name: device
+              mountPath: /dev/ttyACM0
+            - name: zigbee2mqtt-data
+              mountPath: /app/data
+            - name: udev-data
+              mountPath: /run/udev
+          resources: {}
+      volumes:
+        - name: device
+          hostPath:
+            path: /dev/serial/by-id/usb-Texas_Instruments_TI_CC2531_USB_CDC___0X00124B0018ED3DDF-if00 # TODO: Adjust this to the desired path on your host
+            type: CharDevice
+        - name: zigbee2mqtt-data
+          persistentVolumeClaim:
+            claimName: zigbee2mqtt-pvc
+        - name: udev-data
+          hostPath:
+            path: /run/udev
+      hostNetwork: true # Using host network to simplify port mapping
+      securityContext:
+        privileged: true  # Giving privileged access to have device access
