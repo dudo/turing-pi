@@ -10,6 +10,38 @@ Flux driven bare metal kubernetes cluster living on the edge.
 
 A compact AI & edge computing cluster.
 
+```mermaid
+mindmap
+  root((clusters))
+    apps
+      home
+        homebridge
+        zigbee2MQTT
+      sample
+        graphql-federated-gateway
+    charts
+      cert-manager
+      cilium
+      external-secrets
+      grafana
+        agent
+        grafana
+        loki
+        mimir
+        tempo
+      metrics-server
+      nvidia-device-plugin
+    manifests
+      GatewayClass
+      Gateway
+      RuntimeClass
+    notifications
+      slack-error
+      slack-info
+      webhook-receiver
+    secrets
+```
+
 #### Build
 
 - [Densium APU](https://densium.net/products/densium-apu?Frontpanel=Dark+Walnut&Exterior=Black) 4L
