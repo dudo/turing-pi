@@ -76,6 +76,9 @@ flux resume image update my-service
 kubectl logs -n flux-system deploy/image-automation-controller
 
 flux get all -A
+kubectl get GitRepository -n flux-system
+kubectl get Kustomization -n flux-system
+kubectl get HelmRelease -n ingress-nginx
 ```
 
 ### Environment Variables
@@ -100,7 +103,8 @@ envFrom:
 ### Pertinent Sections
 
 - [Apps](./apps)
-- [Clusters](./clusters)
 - [Charts](./charts)
+- [Clusters](./clusters)
+- [Manifests](./manifests)
 - [Notifications](./notifications)
 - [Secrets](./secrets)
