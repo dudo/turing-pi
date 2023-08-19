@@ -16,7 +16,7 @@ A compact AI & edge computing cluster.
 - [Noctua NF-A14 ULN](https://noctua.at/en/products/fan/nf-a14-uln) 140mm
 - [Pico PSU](https://turingpi.com/product/pico-psu/) 160w
 - 3x [Turing RK1](https://turingpi.com/product/turing-rk1) 8 cores /  32 GB
-- 1x [N-Vidia Jetson Orin NX](https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-orin/#tech-specs) 8 cores /  16 GB / 1024 CUDA cores / 32 Tensor cores
+- 1x [Nvidia Jetson Orin NX](https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-orin/#tech-specs) 8 cores /  16 GB / 1024 CUDA cores / 32 Tensor cores
 - 4x [Samsung 970 EVO Plus NVMe M.2 SSD](https://www.samsung.com/us/computing/memory-storage/solid-state-drives/ssd-970-evo-plus-nvme-m-2-250gb-mz-v7s250b-am/) 250GB
 
 32 cores / 112 GB / 1024 CUDA cores / 32 Tensor cores
