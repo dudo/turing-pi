@@ -18,27 +18,27 @@ mindmap
         homebridge
         zigbee2MQTT
       sample
-        graphql-federated-gateway
+        graphql federated gateway
     charts
-      cert-manager
+      cert manager
       cilium
-      external-secrets
+      external secrets
       grafana
         agent
         grafana
         loki
         mimir
         tempo
-      metrics-server
-      nvidia-device-plugin
+      metrics server
+      nvidia device plugin
     manifests
       GatewayClass
       Gateway
       RuntimeClass
     notifications
-      slack-error
-      slack-info
-      webhook-receiver
+      slack error
+      slack info
+      webhook receiver
     secrets
 ```
 
