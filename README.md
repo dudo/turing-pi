@@ -12,7 +12,7 @@ A compact AI & edge computing cluster.
 
 ```mermaid
 mindmap
-  root((clusters))
+  root(clusters/local)
     apps
       home
         homebridge
