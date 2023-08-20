@@ -4,5 +4,7 @@ kind: Kustomization
 namespace: flux-system
 resources:
   - deployment.yaml
-  - persistent-volume.yaml
   - persistent-volume-claim.yaml
+  - persistent-volume.yaml
+  - service.yaml
+  - http-route.yaml

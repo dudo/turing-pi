@@ -14,7 +14,7 @@ spec:
         name: metrics-server
         namespace: flux-system
       version: "3.8.2"
-  interval: 1h
+  interval: 12h
   install:
     remediation:
       retries: 3

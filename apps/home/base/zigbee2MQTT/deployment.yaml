@@ -2,7 +2,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: zigbee2mqtt-deployment
+  name: zigbee2mqtt
 spec:
   replicas: 1
   selector:

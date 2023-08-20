@@ -4,5 +4,5 @@ kind: HelmRepository
 metadata:
   name: nvidia-device-plugin
 spec:
-  interval: 1h
+  interval: 24h
   url: https://nvidia.github.io/k8s-device-plugin

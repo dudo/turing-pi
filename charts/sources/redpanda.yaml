@@ -4,15 +4,16 @@ kind: HelmRepository
 metadata:
   name: redpanda
 spec:
-  interval: 1h
+  interval: 24h
   url: https://charts.redpanda.com
+
 ---
 apiVersion: source.toolkit.fluxcd.io/v1
 kind: GitRepository
 metadata:
   name: redpanda
 spec:
-  interval: 1h
+  interval: 24h
   ref:
     branch: main
   url: https://github.com/redpanda-data/redpanda

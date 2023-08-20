@@ -4,7 +4,7 @@ kind: Kustomization
 metadata:
   name: external-secrets-crds
 spec:
-  interval: 24h
+  interval: 12h
   sourceRef:
     kind: GitRepository
     name: external-secrets

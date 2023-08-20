@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: homebridge
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: homebridge
+  template:
+    metadata:
+      labels:
+        app: homebridge
+    spec:
+      containers:
+      - name: homebridge
+        image: homebridge/homebridge:latest
+        volumeMounts:
+        - name: homebridge-data
+          mountPath: /homebridge
+        resources: {}
+      volumes:
+      - name: homebridge-data
+        persistentVolumeClaim:
+          claimName: homebridge-pvc
+      hostNetwork: true
+      restartPolicy: Always

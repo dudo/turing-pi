@@ -1,0 +1,13 @@
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: homebridge-pv
+spec:
+  storageClassName: manual
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/path/on/host/volumes/homebridge" # TODO: Adjust this to the desired path on your host
