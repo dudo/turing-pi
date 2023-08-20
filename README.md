@@ -80,7 +80,7 @@ brew bundle
 
 ## Usage
 
-### Flux
+### Flux CLI
 
 #### Bootstrap
 
