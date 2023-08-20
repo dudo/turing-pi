@@ -1,0 +1,16 @@
+---
+apiVersion: cluster.redpanda.com/v1alpha1
+kind: Redpanda
+metadata:
+  name: redpanda
+spec:
+  chartRef: {}
+  clusterSpec:
+    external:
+      domain: customredpandadomain.local
+    statefulset:
+      initContainers:
+        setDataDirOwnership:
+          enabled: true
+
+# https://docs.redpanda.com/docs/deploy/deployment-option/self-hosted/kubernetes/local-guide/?kubernetes-platform=kind#explore-your-topic-in-redpanda-console

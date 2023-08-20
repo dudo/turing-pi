@@ -31,6 +31,8 @@ mindmap
         tempo
       metrics server
       nvidia device plugin
+      postgres operator
+      redpanda operator
     manifests
       GatewayClass
       Gateway

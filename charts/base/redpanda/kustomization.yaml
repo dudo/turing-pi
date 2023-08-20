@@ -5,9 +5,9 @@ namespace: flux-system
 resources:
   - crd.yaml
   - release.yaml
-  - service-account.yaml
+  - redpanda.yaml
 configMapGenerator:
-  - name: external-secrets-values
+  - name: redpanda-values
     files:
       - values.yaml=values.yaml
 components:
