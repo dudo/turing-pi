@@ -23,12 +23,7 @@ mindmap
       cert manager
       cilium
       external secrets
-      grafana
-        agent
-        grafana
-        loki
-        mimir
-        tempo
+      grafana lgtm
       metrics server
       nvidia device plugin
       postgres operator
