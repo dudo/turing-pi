@@ -8,13 +8,13 @@ spec:
   gateways:
     allow: FromList
     gatewayRefs:
-    - name: https-gateway
-      namespace: default
+      - name: https-gateway
+        namespace: default
   rules:
     - matches:
-      - path:
-          type: Prefix
-          value: /
+        - path:
+            type: Prefix
+            value: /
       forwardTo:
-      - serviceName: zigbee2mqtt
-        port: 8080
+        - serviceName: zigbee2mqtt
+          port: 8080

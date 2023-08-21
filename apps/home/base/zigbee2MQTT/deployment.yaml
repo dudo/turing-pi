@@ -18,6 +18,7 @@ spec:
           image: koenkk/zigbee2mqtt
           ports:
             - containerPort: 8080
+              name: ui-port
           env:
             - name: TZ
               value: "America/Los_Angeles"
@@ -26,8 +27,6 @@ spec:
               mountPath: /dev/ttyACM0
             - name: zigbee2mqtt-data
               mountPath: /app/data
-            - name: udev-data
-              mountPath: /run/udev
           resources: {}
       volumes:
         - name: device
@@ -37,9 +36,6 @@ spec:
         - name: zigbee2mqtt-data
           persistentVolumeClaim:
             claimName: zigbee2mqtt-pvc
-        - name: udev-data
-          hostPath:
-            path: /run/udev
-      hostNetwork: true # Using host network to simplify port mapping
+      hostNetwork: true
       securityContext:
-        privileged: true  # Giving privileged access to have device access
+        privileged: true

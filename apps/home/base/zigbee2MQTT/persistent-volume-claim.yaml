@@ -4,7 +4,7 @@ kind: PersistentVolumeClaim
 metadata:
   name: zigbee2mqtt-pvc
 spec:
-  storageClassName: manual
+  storageClassName: local-storage
   accessModes:
     - ReadWriteOnce
   resources:

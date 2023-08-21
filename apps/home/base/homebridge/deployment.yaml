@@ -13,15 +13,17 @@ spec:
         app: homebridge
     spec:
       containers:
-      - name: homebridge
-        image: homebridge/homebridge:latest
-        volumeMounts:
-        - name: homebridge-data
-          mountPath: /homebridge
-        resources: {}
+        - name: homebridge
+          image: homebridge/homebridge:latest
+          ports:
+            - containerPort: 8581
+              name: ui-port
+          volumeMounts:
+            - name: homebridge-data
+              mountPath: /homebridge
+          resources: {}
       volumes:
-      - name: homebridge-data
-        persistentVolumeClaim:
-          claimName: homebridge-pvc
+        - name: homebridge-data
+          persistentVolumeClaim:
+            claimName: homebridge-pvc
       hostNetwork: true
-      restartPolicy: Always

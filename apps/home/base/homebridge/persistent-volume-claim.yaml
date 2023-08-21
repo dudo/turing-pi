@@ -4,7 +4,7 @@ kind: PersistentVolumeClaim
 metadata:
   name: homebridge-pvc
 spec:
-  storageClassName: manual
+  storageClassName: local-storage
   accessModes:
     - ReadWriteOnce
   resources:

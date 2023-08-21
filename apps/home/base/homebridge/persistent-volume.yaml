@@ -4,10 +4,19 @@ kind: PersistentVolume
 metadata:
   name: homebridge-pv
 spec:
-  storageClassName: manual
   capacity:
     storage: 1Gi
+  volumeMode: Filesystem
   accessModes:
     - ReadWriteOnce
-  hostPath:
-    path: "/path/on/host/volumes/homebridge" # TODO: Adjust this to the desired path on your host
+  storageClassName: local-storage
+  local:
+    path: /mnt/homebridge
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+        - matchExpressions:
+            - key: kubernetes.io/hostname
+              operator: In
+              values:
+                - jetson1
