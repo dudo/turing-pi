@@ -6,3 +6,14 @@ metadata:
 spec:
   interval: 24h
   url: https://helm.cilium.io/
+
+---
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: GitRepository
+metadata:
+  name: gateway-api
+spec:
+  interval: 24h
+  ref:
+    branch: main
+  url: http://github.com/kubernetes-sigs/gateway-api

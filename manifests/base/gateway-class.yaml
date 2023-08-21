@@ -4,4 +4,4 @@ kind: GatewayClass
 metadata:
   name: cilium-gateway-class
 spec:
-  controller: <ingress-controller-name> # TODO: cilium controller
+  controller: cilium

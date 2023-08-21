@@ -13,6 +13,21 @@ spec:
       labels:
         app: zigbee2mqtt
     spec:
+      initContainers:
+        - name: default-config
+          image: busybox
+          command:
+            - sh
+            - -c
+            - |
+              if [ ! -f /app/data/configuration.yaml ]; then
+                cp /defaultconfig/configuration.yaml /app/data
+              fi
+          volumeMounts:
+            - name: zigbee2mqtt-data
+              mountPath: /app/data
+            - name: default-config
+              mountPath: /defaultconfig
       containers:
         - name: zigbee2mqtt
           image: koenkk/zigbee2mqtt
@@ -36,6 +51,9 @@ spec:
         - name: zigbee2mqtt-data
           persistentVolumeClaim:
             claimName: zigbee2mqtt-pvc
+        - name: default-data
+          configMap:
+            name: zigbee2mqtt-default-config
       hostNetwork: true
       securityContext:
         privileged: true
