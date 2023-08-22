@@ -25,19 +25,17 @@ mindmap
       cilium
       external secrets
       grafana lgtm
-      metrics server
       nvidia device plugin
-      postgres operator
-      redpanda operator
+      postgres
+      redpanda
     manifests
       GatewayClass
       Gateway
       RuntimeClass
       StorageClass
     notifications
-      slack error
-      slack info
-      webhook receiver
+      slack
+      webhooks
     secrets
 ```
 
