@@ -16,6 +16,7 @@ mindmap
     apps
       home
         homebridge
+        waterstream
         zigbee2MQTT
       sample
         graphql federated gateway
@@ -32,6 +33,7 @@ mindmap
       GatewayClass
       Gateway
       RuntimeClass
+      StorageClass
     notifications
       slack error
       slack info
