@@ -12,3 +12,5 @@ brew 'k0sproject/tap/k0sctl'
 brew 'helm'
 
 brew 'cilium-cli'
+
+brew 'kubeseal'

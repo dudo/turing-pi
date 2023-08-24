@@ -2,18 +2,18 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: external-secrets
+  name: sealed-secrets
 spec:
-  releaseName: external-secrets
-  targetNamespace: external-secrets
+  releaseName: sealed-secrets
+  targetNamespace: kube-system
   chart:
     spec:
-      chart: external-secrets
+      chart: sealed-secrets
       sourceRef:
         kind: HelmRepository
-        name: external-secrets
+        name: sealed-secrets
         namespace: flux-system
-      version: "0.6.0"
+      version: "2.12.0"
   interval: 12h
   install:
     createNamespace: true
@@ -21,4 +21,4 @@ spec:
       retries: 3
   valuesFrom:
     - kind: ConfigMap
-      name: external-secrets-values
+      name: sealed-secrets-values
