@@ -28,6 +28,7 @@ mindmap
       nvidia device plugin
       postgres
       redpanda
+      sealed secrets
     manifests
       GatewayClass
       Gateway
@@ -36,7 +37,6 @@ mindmap
     notifications
       slack
       webhooks
-    secrets
 ```
 
 #### Build
