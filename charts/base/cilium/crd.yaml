@@ -24,9 +24,4 @@ spec:
     name: gateway-api
     namespace: flux-system
   path: ./config/crd/experimental
-  ignore: |
-    # exclude all
-    *
-    # include specific files
-    gateway.networking.k8s.io_tlsroutes.yaml
   prune: true

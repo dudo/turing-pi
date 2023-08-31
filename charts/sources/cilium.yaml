@@ -17,3 +17,10 @@ spec:
   ref:
     branch: main
   url: http://github.com/kubernetes-sigs/gateway-api
+  ignore: |
+    # exclude all
+    *
+    # include specific files
+    config/crd/kustomization.yaml
+    config/crd/standard/*
+    config/crd/experimental/gateway.networking.k8s.io_tlsroutes.yaml
