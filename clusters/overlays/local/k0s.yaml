@@ -13,7 +13,7 @@ spec:
     #   role: controller+worker
     #   noTaints: true
     #   installFlags:
-    #     - --labels="turingpi.com/GPIO=true,turingpi.com/PCIe1=true,turingpi.com/HDMI=true,turingpi.com/DSI=true"
+    #     - --labels="tp2.turingpi.com/slot=1"
     # - ssh:
     #     address: 192.168.4.55
     #     user: dudo
@@ -22,7 +22,7 @@ spec:
     #   role: controller+worker
     #   noTaints: true
     #   installFlags:
-    #     - --labels="turingpi.com/PCIe2=true"
+    #     - --labels="tp2.turingpi.com/slot=2"
     # - ssh:
     #     address: 192.168.4.56
     #     user: dudo
@@ -31,15 +31,15 @@ spec:
     #   role: controller+worker
     #   noTaints: true
     #   installFlags:
-    #     - --labels="turingpi.com/SATA=true"
+    #     - --labels="tp2.turingpi.com/slot=3"
     - ssh:
         address: 192.168.4.53
         user: dudo
         port: 22
         keyPath: ~/.ssh/id_rsa
       role: single
-      # installFlags:
-      #   - --labels="turingpi.com/USB=true"
+      installFlags:
+        - --labels="tp2.turingpi.com/slot=4"
   k0s:
     version: 1.27.4+k0s.0
     dynamicConfig: false
@@ -64,10 +64,9 @@ spec:
           agentPort: 8132
         network:
           kubeProxy:
-            disabled: false
-            mode: iptables
+            disabled: true
           podCIDR: 10.244.0.0/16
-          provider: kuberouter
+          provider: custom
           serviceCIDR: 10.96.0.0/12
         podSecurityPolicy:
           defaultPolicy: 00-k0s-privileged

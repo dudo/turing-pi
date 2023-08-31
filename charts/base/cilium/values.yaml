@@ -2,13 +2,22 @@
 kubeProxyReplacement: true
 k8sServiceHost: "192.168.4.53"
 k8sServicePort: "6443"
+bpf:
+  masquerade: true
 gatewayAPI:
   enabled: true
-loadBalancer:
-  mode: dsr
+operator:
+  enabled: true
+  replicas: 1
+  rollOutPods: true
 hubble:
   enabled: true
   relay:
     enabled: true
+    rollOutPods: true
   ui:
     enabled: true
+    rollOutPods: true
+rollOutCiliumPods: true
+securityContext:
+  privileged: true
