@@ -12,16 +12,21 @@ spec:
   path: ./config/crd
   prune: true
 
-# ---
-# apiVersion: kustomize.toolkit.fluxcd.io/v1
-# kind: Kustomization
-# metadata:
-#   name: gateway-api-crds-experimental
-# spec:
-#   interval: 12h
-#   sourceRef:
-#     kind: GitRepository
-#     name: gateway-api
-#     namespace: flux-system
-#   path: ./config/crd/experimental/gateway.networking.k8s.io_tlsroutes.yaml
-#   prune: true
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: gateway-api-crds-experimental
+spec:
+  interval: 12h
+  sourceRef:
+    kind: GitRepository
+    name: gateway-api
+    namespace: flux-system
+  path: ./config/crd/experimental
+  ignore: |
+    # exclude all
+    *
+    # include specific files
+    gateway.networking.k8s.io_tlsroutes.yaml
+  prune: true
