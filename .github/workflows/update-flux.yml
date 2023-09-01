@@ -10,6 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       BRANCH: update-flux
+      INSTALL_LOCATION: ./clusters/flux-system/gotk-components.yaml
     steps:
       - name: Check out code
         uses: actions/checkout@v3
@@ -28,13 +29,13 @@ jobs:
         id: update
         run: |
           flux install \
-            --export > ./clusters/flux-system/gotk-components.yaml
+            --export > $INSTALL_LOCATION
           echo "flux_version=$(flux -v)" >> $GITHUB_OUTPUT
       - name: Commit
         continue-on-error: true
         run: |
           git add .
-          git commit -am "Bump flux to ${{ steps.update.outputs.flux_version }}"
+          git commit -am "${{ steps.update.outputs.flux_version }}"
           git push -u origin HEAD
       - name: GitHub Pull Request
         env:
