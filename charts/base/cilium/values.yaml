@@ -9,6 +9,7 @@ bgpControlPlane:
   enabled: true
 ipam:
   mode: kubernetes
+autoDirectNodeRoutes: true
 gatewayAPI:
   enabled: true
 operator:
