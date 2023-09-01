@@ -4,4 +4,4 @@ kind: GatewayClass
 metadata:
   name: cilium
 spec:
-  controller: cilium
+  controllerName: io.cilium/gateway-controller
