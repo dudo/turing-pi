@@ -5,6 +5,7 @@ namespace: flux-system
 resources:
   - crd.yaml
   - release.yaml
+  - pool.yaml
 configMapGenerator:
   - name: cilium-values
     files:
