@@ -3,13 +3,12 @@ kind: HTTPRoute
 metadata:
   name: homebridge
   labels:
-    gateway: https-gateway
+    gateway: http
 spec:
   gateways:
-    allow: FromList
-    gatewayRefs:
-      - name: https-gateway
-        namespace: default
+    allow: All
+  # hostnames:
+  #   - dudo.dev
   rules:
     - matches:
         - path:

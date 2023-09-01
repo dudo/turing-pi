@@ -2,9 +2,9 @@
 apiVersion: networking.x-k8s.io/v1alpha1
 kind: Gateway
 metadata:
-  name: https-gateway
+  name: https
 spec:
-  gatewayClassName: cilium-gateway-class
+  gatewayClassName: cilium
   listeners:
     - protocol: HTTPS
       port: 443
@@ -12,6 +12,20 @@ spec:
         kind: HTTPRoute
         selector:
           matchLabels:
-            gateway: https-gateway
-        namespaces:
-          from: "Same"
+            gateway: https
+
+---
+apiVersion: networking.x-k8s.io/v1alpha1
+kind: Gateway
+metadata:
+  name: http
+spec:
+  gatewayClassName: cilium
+  listeners:
+    - protocol: HTTP
+      port: 80
+      routes:
+        kind: HTTPRoute
+        selector:
+          matchLabels:
+            gateway: http

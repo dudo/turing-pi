@@ -5,10 +5,12 @@ metadata:
   name: webhook-receiver-route
   namespace: flux-system
   labels:
-    gateway: https-gateway
+    gateway: http
 spec:
-  hostnames:
-    - dudo.dev
+  gateways:
+    allow: All
+  # hostnames:
+  #   - dudo.dev
   rules:
     - matches:
         - path:

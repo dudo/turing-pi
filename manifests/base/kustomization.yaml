@@ -4,5 +4,6 @@ kind: Kustomization
 namespace: flux-system
 resources:
   - runtime-class.yaml
-  # - gateway-class.yaml
-  # - gateway.yaml
+  - gateway-class.yaml
+  - gateway.yaml
+  # - storage-class.yaml
