@@ -6,7 +6,8 @@ metadata:
 spec:
   gatewayClassName: cilium
   listeners:
-    - protocol: HTTPS
+    - name: https-listener
+      protocol: HTTPS
       port: 443
       routes:
         kind: HTTPRoute
@@ -22,7 +23,8 @@ metadata:
 spec:
   gatewayClassName: cilium
   listeners:
-    - protocol: HTTP
+    - name: http-listener
+      protocol: HTTP
       port: 80
       routes:
         kind: HTTPRoute
