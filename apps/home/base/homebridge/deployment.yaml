@@ -25,5 +25,7 @@ spec:
       volumes:
         - name: homebridge-data
           persistentVolumeClaim:
-            claimName: homebridge-pvc
+            claimName: homebridge
       hostNetwork: true
+      securityContext:
+        privileged: true

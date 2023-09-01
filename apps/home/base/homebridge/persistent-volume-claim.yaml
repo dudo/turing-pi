@@ -2,7 +2,7 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: homebridge-pvc
+  name: homebridge
 spec:
   storageClassName: local-storage
   accessModes:
@@ -10,3 +10,6 @@ spec:
   resources:
     requests:
       storage: 1Gi
+  selector:
+    matchLabels:
+      app: homebridge

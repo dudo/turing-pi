@@ -18,14 +18,16 @@ spec:
           image: simplematter/waterstream-kafka-arm64v8:latest
           envFrom:
             - configMapRef:
-                name: waterstream-config
-          # volumeMounts:
-          #   - name: license
-          #     mountPath: /etc/waterstream.license
-          #     readOnly: true
+                name: waterstream
+          volumeMounts:
+            - name: license
+              mountPath: /etc/waterstream.license
+              readOnly: true
           resources: {}
-      # volumes:
-      #   - name: license
-      #     secret:
-      #       name: waterstream-license
-      # hostNetwork: true # let's try using a service instead
+      volumes:
+        - name: license
+          secret:
+            secretName: waterstream
+      hostNetwork: true
+      securityContext:
+        privileged: true

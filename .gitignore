@@ -17,8 +17,3 @@ coverage
 /tmp/*
 !/log/.keep
 !/tmp/.keep
-
-# Ignore overrides
-.env
-.env.local
-compose.override.yml

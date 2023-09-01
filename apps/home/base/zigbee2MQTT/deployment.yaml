@@ -50,10 +50,10 @@ spec:
             type: CharDevice
         - name: zigbee2mqtt-data
           persistentVolumeClaim:
-            claimName: zigbee2mqtt-pvc
+            claimName: zigbee2mqtt
         - name: default-data
           configMap:
-            name: zigbee2mqtt-default-config
+            name: zigbee2mqtt-defaults
       hostNetwork: true
       securityContext:
         privileged: true

@@ -23,7 +23,6 @@ mindmap
     charts
       cert manager
       cilium
-      external secrets
       grafana lgtm
       nvidia device plugin
       postgres
@@ -101,6 +100,9 @@ flux bootstrap github \
 ```sh
 flux suspend image update my-service
 flux resume image update my-service
+flux reconcile source git flux-system
+flux reconcile kustomization flux-system
+flux reconcile kustomization charts
 
 kubectl logs -n flux-system deploy/image-automation-controller
 
@@ -110,30 +112,29 @@ kubectl get Kustomization -n flux-system
 kubectl get HelmRelease -n ingress-nginx
 ```
 
-### Environment Variables
+### Sealed Secrets
 
-env are stored within `.env` files within their appropriate folder. These are then converted into configMaps via kustomize.
+```sh
+base64 <<EOF
+This is a
+multi-line string
+that I want to encode.
+EOF
 
-```yaml
-configMapGenerator:
-  - name: my-thing-config
-    envs:
-      - .env
+kubeseal --format=yaml <<EOF
+apiVersion: v1
+kind: Secret
+metadata:
+  name: mysecret
+  namespace: whatever
+data:
+  my.file: Y2xpZW50c0xpbWl0OklOVD0=
 ```
 
-Use the config map, per usual.
-
-```yaml
-envFrom:
-  - configMapRef:
-      name: my-thing-config
-```
-
-### Pertinent Sections
+## Pertinent Sections
 
 - [Apps](./apps)
 - [Charts](./charts)
 - [Clusters](./clusters)
 - [Manifests](./manifests)
 - [Notifications](./notifications)
-- [Secrets](./secrets)
