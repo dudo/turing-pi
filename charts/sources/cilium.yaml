@@ -19,8 +19,8 @@ spec:
   url: http://github.com/kubernetes-sigs/gateway-api
   ignore: |
     # exclude all
-    *
+    /*
     # include specific files
-    config/crd/kustomization.yaml
-    config/crd/standard/*
-    config/crd/experimental/gateway.networking.k8s.io_tlsroutes.yaml
+    !/config/crd/kustomization.yaml
+    !/config/crd/standard/*
+    !/config/crd/experimental/gateway.networking.k8s.io_tlsroutes.yaml
