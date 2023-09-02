@@ -2,17 +2,17 @@
 apiVersion: image.toolkit.fluxcd.io/v1beta1
 kind: ImageUpdateAutomation
 metadata:
-  name: sample-nginx
+  name: blue
 spec:
   interval: 10m
   sourceRef:
     kind: GitRepository
-    name: sample-nginx
+    name: blue
     namespace: flux-system
   git:
     checkout:
       ref:
-        branch: main
+        branch: master
     push:
       branch: continuous-deployment
     commit:
@@ -23,5 +23,5 @@ spec:
         {{ $url }}
         {{ end -}}
       author:
-        email: brett@dudo.io # TODO: change this to a bot user
-        name: DudoBot
+        email: github-actions[bot]@users.noreply.github.com
+        name: github-actions[bot]

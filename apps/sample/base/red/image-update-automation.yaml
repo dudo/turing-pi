@@ -1,0 +1,27 @@
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta1
+kind: ImageUpdateAutomation
+metadata:
+  name: red
+spec:
+  interval: 10m
+  sourceRef:
+    kind: GitRepository
+    name: red
+    namespace: flux-system
+  git:
+    checkout:
+      ref:
+        branch: master
+    push:
+      branch: continuous-deployment
+    commit:
+      messageTemplate: |
+        Deploying `{{ .AutomationObject }}`
+
+        {{ range $_, $url := .Updated.Images -}}
+        {{ $url }}
+        {{ end -}}
+      author:
+        email: github-actions[bot]@users.noreply.github.com
+        name: github-actions[bot]

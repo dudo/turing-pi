@@ -1,0 +1,10 @@
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta1
+kind: ImageRepository
+metadata:
+  name: red
+spec:
+  # secretRef:
+  #   name: registry-auth
+  image: dudo/red
+  interval: 1h

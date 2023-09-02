@@ -2,24 +2,25 @@
 apiVersion: source.toolkit.fluxcd.io/v1
 kind: GitRepository
 metadata:
-  name: sample-nginx
+  name: blue
 spec:
   interval: 10m
-  url: https://github.com/sample/nginx
+  url: https://github.com/gitops-remote-dev/blue
   ref:
-    branch: main
+    branch: master
 
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: nginx
+  name: blue
 spec:
   interval: 10m
   sourceRef:
     kind: GitRepository
-    name: sample-nginx
+    name: blue
     namespace: flux-system
+  targetNamespace: blue
   path: ./deploy/overlays/local
   prune: true
   wait: true

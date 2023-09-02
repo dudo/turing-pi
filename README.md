@@ -109,7 +109,7 @@ kubectl logs -n flux-system deploy/image-automation-controller
 flux get all -A
 kubectl get GitRepository -n flux-system
 kubectl get Kustomization -n flux-system
-kubectl get HelmRelease -n ingress-nginx
+kubectl get HelmRelease -n blue
 ```
 
 ### Sealed Secrets

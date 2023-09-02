@@ -2,13 +2,13 @@
 apiVersion: image.toolkit.fluxcd.io/v1beta1
 kind: ImagePolicy
 metadata:
-  name: nginx
+  name: red
 spec:
   imageRepositoryRef:
-    name: nginx
-  filterTags:
-    pattern: '^main-[a-f0-9]+-(?P<ts>[0-9]+)'
-    extract: '$ts'
+    name: red
+  # filterTags:
+  #   pattern: '^main-[a-f0-9]+-(?P<ts>[0-9]+)'
+  #   extract: '$ts'
   policy:
     numerical:
       order: asc
