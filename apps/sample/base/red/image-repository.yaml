@@ -6,5 +6,5 @@ metadata:
 spec:
   # secretRef:
   #   name: registry-auth
-  image: dudo/red
+  image: ghcr.io/gitops-remote-dev/red
   interval: 1h
