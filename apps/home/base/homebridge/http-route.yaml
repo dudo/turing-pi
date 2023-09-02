@@ -1,12 +1,13 @@
+---
 apiVersion: gateway.networking.k8s.io/v1beta1
 kind: HTTPRoute
 metadata:
   name: homebridge
-  labels:
-    gateway: http
 spec:
   gateways:
-    allow: All
+    allow: FromList
+    gatewayRefs:
+      - name: http
   # hostnames:
   #   - dudo.dev
   rules:

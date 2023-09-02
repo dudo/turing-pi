@@ -2,10 +2,10 @@
 apiVersion: image.toolkit.fluxcd.io/v1beta1
 kind: ImagePolicy
 metadata:
-  name: graphql-federated-gateway
+  name: nginx
 spec:
   imageRepositoryRef:
-    name: graphql-federated-gateway
+    name: nginx
   filterTags:
     pattern: '^main-[a-f0-9]+-(?P<ts>[0-9]+)'
     extract: '$ts'

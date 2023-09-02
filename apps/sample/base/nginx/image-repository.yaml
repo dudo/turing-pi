@@ -2,9 +2,9 @@
 apiVersion: image.toolkit.fluxcd.io/v1beta1
 kind: ImageRepository
 metadata:
-  name: graphql-federated-gateway
+  name: nginx
 spec:
   secretRef:
     name: registry-auth
-  image: ghcr.io/dudo/graphql-federated-gateway
+  image: ghcr.io/dudo/nginx
   interval: 1h

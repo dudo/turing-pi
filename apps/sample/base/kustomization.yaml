@@ -4,4 +4,4 @@ kind: Kustomization
 namespace: flux-system
 resources:
   - namespace.yaml
-  - graphql-federated-gateway
+  - nginx

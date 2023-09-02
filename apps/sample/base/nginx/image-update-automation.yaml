@@ -2,12 +2,12 @@
 apiVersion: image.toolkit.fluxcd.io/v1beta1
 kind: ImageUpdateAutomation
 metadata:
-  name: sample-graphql-federated-gateway
+  name: sample-nginx
 spec:
   interval: 10m
   sourceRef:
     kind: GitRepository
-    name: sample-graphql-federated-gateway
+    name: sample-nginx
     namespace: flux-system
   git:
     checkout:
