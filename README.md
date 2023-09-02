@@ -110,6 +110,9 @@ flux get all -A
 kubectl get GitRepository -n flux-system
 kubectl get Kustomization -n flux-system
 kubectl get HelmRelease -n blue
+
+kubectl run curl --image=curlimages/curl --restart=Never --rm -it -- sh
+curl http://blue.blue:8080
 ```
 
 ### Sealed Secrets
