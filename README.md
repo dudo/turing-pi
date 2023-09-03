@@ -112,7 +112,7 @@ kubectl get Kustomization -n flux-system
 kubectl get HelmRelease -n blue
 
 kubectl run curl --image=curlimages/curl --restart=Never --rm -it -- sh
-curl http://blue.blue:8080
+kubectl run busybox --image=busybox --restart=Never --rm -it -- sh
 ```
 
 ### Sealed Secrets
