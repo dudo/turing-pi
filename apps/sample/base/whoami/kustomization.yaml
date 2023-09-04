@@ -1,8 +1,8 @@
 ---
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
+namespace: whoami
 resources:
-  - namespace.yaml
-  - red
-  - blue
-  - whoami
+  - deployment.yaml
+  - service.yaml
+  - http-route.yaml
