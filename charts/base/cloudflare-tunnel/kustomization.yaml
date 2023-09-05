@@ -11,3 +11,9 @@ configMapGenerator:
       - values.yaml=values.yaml
 components:
   - ../../components/configurations
+patches:
+  - target:
+      kind: SealedSecret
+    patch: |-
+      metadata:
+        namespace: cloudflare
