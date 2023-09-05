@@ -6,6 +6,8 @@ cloudflare:
   ingress:
     - hostname: "*.dudo.dev"
       service: http://10.112.13.29:80
+    - hostname: "dudo.dev"
+      service: http://10.112.13.29:80
 image:
   tag: "2023.8.2"
 replicaCount: 1

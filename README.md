@@ -23,7 +23,8 @@ mindmap
     charts
       cert manager
       cilium
-      grafana lgtm
+      cloudflare tunnel
+      grafana
       nvidia device plugin
       postgres
       redpanda
