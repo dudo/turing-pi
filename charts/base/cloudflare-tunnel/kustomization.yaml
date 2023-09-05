@@ -6,6 +6,7 @@ resources:
   - release.yaml
 configMapGenerator:
   - name: cloudflare-tunnel-values
+    namespace: flux-system
     files:
       - values.yaml=values.yaml
 components:
