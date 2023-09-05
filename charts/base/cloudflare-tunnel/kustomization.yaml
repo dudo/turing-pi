@@ -17,3 +17,8 @@ patches:
     patch: |-
       metadata:
         namespace: cloudflare
+patchesStrategicMerge:
+- |
+  kind: SealedSecret
+  metadata:
+    namespace: cloudflared
