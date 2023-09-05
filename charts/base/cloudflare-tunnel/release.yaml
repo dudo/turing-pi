@@ -1,0 +1,23 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: cloudflare-tunnel
+spec:
+  releaseName: cloudflare-tunnel
+  targetNamespace: cloudflare
+  chart:
+    spec:
+      chart: cloudflare-tunnel
+      sourceRef:
+        kind: HelmRepository
+        name: cloudflare
+        namespace: flux-system
+      version: "0.3.0"
+  interval: 12h
+  install:
+    remediation:
+      retries: 3
+  valuesFrom:
+    - kind: ConfigMap
+      name: cloudflare-tunnel-values

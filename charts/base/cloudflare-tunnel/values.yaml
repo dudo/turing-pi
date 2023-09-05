@@ -1,0 +1,18 @@
+---
+cloudflare:
+  tunnelName: turing-pi
+  secretName: cloudflared
+  # https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/configuration/configuration-file/ingress
+  ingress:
+    - hostname: "*.dudo.dev"
+      service: http://10.112.13.29:80
+image:
+  tag: "2023.8.2"
+replicaCount: 1
+# resources:
+#   limits:
+#     cpu: 200m
+#     memory: 128Mi
+#   requests:
+#     cpu: 100m
+#     memory: 128Mi
