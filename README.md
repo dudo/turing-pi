@@ -132,6 +132,7 @@ metadata:
   namespace: whatever
 data:
   my.file: Y2xpZW50c0xpbWl0OklOVD0=
+EOF
 ```
 
 ## Pertinent Sections
