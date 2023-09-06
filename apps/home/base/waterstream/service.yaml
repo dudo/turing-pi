@@ -7,6 +7,5 @@ spec:
   selector:
     app: waterstream
   ports:
-    - protocol: TCP
-      port: 1883
+    - port: 80
       targetPort: 1883

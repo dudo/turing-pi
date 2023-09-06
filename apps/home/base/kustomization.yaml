@@ -5,4 +5,5 @@ namespace: flux-system
 resources:
   - namespace.yaml
   - homebridge
-  - zigbee2MQTT
+  # - zigbee2MQTT
+  # - waterstream

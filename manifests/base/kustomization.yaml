@@ -6,4 +6,4 @@ resources:
   - runtime-class.yaml
   - gateway-class.yaml
   - gateway.yaml
-  # - storage-class.yaml
+  - storage-class.yaml

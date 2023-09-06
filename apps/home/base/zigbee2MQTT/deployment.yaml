@@ -31,12 +31,12 @@ spec:
       containers:
         - name: zigbee2mqtt
           image: koenkk/zigbee2mqtt
-          ports:
-            - containerPort: 8080
-              name: ui-port
           env:
             - name: TZ
               value: "America/Los_Angeles"
+          ports:
+            - containerPort: 8080
+              name: ui
           volumeMounts:
             - name: device
               mountPath: /dev/ttyACM0

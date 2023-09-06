@@ -14,11 +14,12 @@ spec:
   storageClassName: local-storage
   local:
     path: /mnt/zigbee2mqtt
+  persistentVolumeReclaimPolicy: Retain
   nodeAffinity:
     required:
       nodeSelectorTerms:
         - matchExpressions:
-            - key: kubernetes.io/hostname
+            - key: tp2.turingpi.com/slot
               operator: In
               values:
-                - jetson1
+                - "4"

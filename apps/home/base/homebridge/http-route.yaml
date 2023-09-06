@@ -4,17 +4,14 @@ kind: HTTPRoute
 metadata:
   name: homebridge
 spec:
-  gateways:
-    allow: FromList
-    gatewayRefs:
-      - name: http
-  # hostnames:
-  #   - dudo.dev
+  parentRefs:
+    - kind: Gateway
+      name: http
+      namespace: kube-system
+  hostnames:
+    - homebridge.dudo.dev
+    - homebridge.marin.dev
   rules:
-    - matches:
-        - path:
-            type: Prefix
-            value: /
-      forwardTo:
-        - serviceName: homebridge
-          port: 8080
+    - backendRefs:
+        - name: homebridge
+          port: 80

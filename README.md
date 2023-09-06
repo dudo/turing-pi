@@ -19,7 +19,9 @@ mindmap
         waterstream
         zigbee2MQTT
       sample
-        graphql federated gateway
+        red
+        blue
+        whoami
     charts
       cert manager
       cilium
