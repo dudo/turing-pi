@@ -21,16 +21,16 @@ spec:
             - name: TZ
               value: America/Los_Angeles
           ports:
-            - containerPort: 8581
-              name: ui
+            - name: ui
+              containerPort: 8581
           volumeMounts:
             - name: homebridge-data
               mountPath: /homebridge
+          securityContext:
+            privileged: true
           resources: {}
       volumes:
         - name: homebridge-data
           persistentVolumeClaim:
             claimName: homebridge
       hostNetwork: true
-      securityContext:
-        privileged: true

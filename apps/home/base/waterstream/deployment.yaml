@@ -23,11 +23,11 @@ spec:
             - name: license
               mountPath: /etc/waterstream.license
               readOnly: true
+          securityContext:
+            privileged: true
           resources: {}
       volumes:
         - name: license
           secret:
             secretName: waterstream
       hostNetwork: true
-      securityContext:
-        privileged: true

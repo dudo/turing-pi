@@ -42,6 +42,8 @@ spec:
               mountPath: /dev/ttyACM0
             - name: zigbee2mqtt-data
               mountPath: /app/data
+          securityContext:
+            privileged: true
           resources: {}
       volumes:
         - name: device
@@ -55,5 +57,3 @@ spec:
           configMap:
             name: zigbee2mqtt-defaults
       hostNetwork: true
-      securityContext:
-        privileged: true
