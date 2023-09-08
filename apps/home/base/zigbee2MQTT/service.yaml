@@ -7,5 +7,5 @@ spec:
   selector:
     app: zigbee2mqtt
   ports:
-    - port: 80
+    - port: 8080
       targetPort: ui

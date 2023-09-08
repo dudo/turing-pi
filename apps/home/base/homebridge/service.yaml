@@ -7,5 +7,5 @@ spec:
   selector:
     app: homebridge
   ports:
-    - port: 80
+    - port: 8080
       targetPort: ui
