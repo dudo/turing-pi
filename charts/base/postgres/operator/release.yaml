@@ -13,7 +13,7 @@ spec:
         kind: HelmRepository
         name: postgres-operator
         namespace: flux-system
-      version: "1.10.0"
+      version: "^1.10.0"
   interval: 12h
   install:
     createNamespace: true

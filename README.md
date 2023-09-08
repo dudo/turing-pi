@@ -82,6 +82,10 @@ brew bundle
 
 ## Usage
 
+### Kubernetes
+
+<https://kubernetes.io/docs/reference/kubectl/cheatsheet/>
+
 ### Flux CLI
 
 #### Bootstrap
@@ -120,12 +124,15 @@ kubectl run busybox --image=busybox --restart=Never --rm -it -- sh
 
 ### Sealed Secrets
 
+<https://github.com/bitnami-labs/sealed-secrets/blob/main/docs/bring-your-own-certificates.md>
+
 ```sh
-base64 <<EOF
-This is a
-multi-line string
-that I want to encode.
+encoded_string=$(base64 <<EOF
+  This is a
+  multi-line string
+  that I want to encode.
 EOF
+)
 
 kubeseal --format=yaml <<EOF
 apiVersion: v1
@@ -134,7 +141,7 @@ metadata:
   name: mysecret
   namespace: whatever
 data:
-  my.file: Y2xpZW50c0xpbWl0OklOVD0=
+  my.file: ${encoded_string}
 EOF
 ```
 
