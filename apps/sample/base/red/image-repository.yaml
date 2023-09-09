@@ -4,7 +4,5 @@ kind: ImageRepository
 metadata:
   name: red
 spec:
-  # secretRef:
-  #   name: registry-auth
   image: ghcr.io/gitops-remote-dev/red
   interval: 1h

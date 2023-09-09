@@ -17,9 +17,9 @@ spec:
         - name: homebridge
           # imagePullPolicy: Always # TODO: We're using latest, so we need this. Uncomment when stable
           image: homebridge/homebridge:latest
-          env:
-            - name: TZ
-              value: America/Los_Angeles
+          envFrom:
+            - configMapRef:
+                name: homebridge-config
           ports:
             - name: ui
               containerPort: 8581

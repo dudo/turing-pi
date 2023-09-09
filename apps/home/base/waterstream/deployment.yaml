@@ -18,7 +18,7 @@ spec:
           image: simplematter/waterstream-kafka-arm64v8:latest
           envFrom:
             - configMapRef:
-                name: waterstream
+                name: waterstream-config
           volumeMounts:
             - name: license
               mountPath: /etc/waterstream.license

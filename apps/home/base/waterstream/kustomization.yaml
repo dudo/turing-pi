@@ -7,6 +7,6 @@ resources:
   - deployment.yaml
   - service.yaml
 configMapGenerator:
-  - name: waterstream
+  - name: waterstream-config
     envs:
       - .env

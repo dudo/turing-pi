@@ -8,3 +8,7 @@ resources:
   - deployment.yaml
   - service.yaml
   - http-route.yaml
+configMapGenerator:
+  - name: homebridge-config
+    envs:
+      - .env

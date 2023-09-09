@@ -31,9 +31,9 @@ spec:
       containers:
         - name: zigbee2mqtt
           image: koenkk/zigbee2mqtt
-          env:
-            - name: TZ
-              value: "America/Los_Angeles"
+          envFrom:
+            - configMapRef:
+                name: zigbee2mqtt-config
           ports:
             - containerPort: 8080
               name: ui

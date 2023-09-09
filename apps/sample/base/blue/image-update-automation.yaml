@@ -10,18 +10,15 @@ spec:
     name: blue
     namespace: flux-system
   git:
-    checkout:
-      ref:
-        branch: master
     push:
       branch: continuous-deployment
     commit:
+      author:
+        email: github-actions[bot]@users.noreply.github.com
+        name: github-actions[bot]
       messageTemplate: |
         Deploying `{{ .AutomationObject }}`
 
         {{ range $_, $url := .Updated.Images -}}
         {{ $url }}
         {{ end -}}
-      author:
-        email: github-actions[bot]@users.noreply.github.com
-        name: github-actions[bot]
