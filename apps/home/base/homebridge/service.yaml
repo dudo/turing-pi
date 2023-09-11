@@ -4,6 +4,7 @@ kind: Service
 metadata:
   name: homebridge
 spec:
+  clusterIP: None
   selector:
     app: homebridge
   ports:

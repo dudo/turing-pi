@@ -4,6 +4,7 @@ kind: Service
 metadata:
   name: zigbee2mqtt
 spec:
+  clusterIP: None
   selector:
     app: zigbee2mqtt
   ports:

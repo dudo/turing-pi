@@ -1,9 +1,10 @@
 ---
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: zigbee2mqtt
 spec:
+  serviceName: zigbee2mqtt
   replicas: 1
   selector:
     matchLabels:
@@ -21,13 +22,20 @@ spec:
             - -c
             - |
               if [ ! -f /app/data/configuration.yaml ]; then
-                cp /defaultconfig/configuration.yaml /app/data
+                cat <<EOL > /app/data/configuration.yaml
+                  homeassistant: false
+                  permit_join: true
+                  mqtt:
+                    base_topic: mqtt_messages
+                    server: 'mqtt://waterstream:1883'
+                  serial:
+                    port: /dev/ttyACM0
+                  frontend: true
+                EOL
               fi
           volumeMounts:
             - name: zigbee2mqtt-data
               mountPath: /app/data
-            - name: default-config
-              mountPath: /defaultconfig
       containers:
         - name: zigbee2mqtt
           image: koenkk/zigbee2mqtt
@@ -50,10 +58,16 @@ spec:
           hostPath:
             path: /dev/serial/by-id/usb-Texas_Instruments_TI_CC2531_USB_CDC___0X00124B0018ED3DDF-if00 # TODO: Adjust this to the desired path on your host
             type: CharDevice
-        - name: zigbee2mqtt-data
-          persistentVolumeClaim:
-            claimName: zigbee2mqtt
-        - name: default-data
-          configMap:
-            name: zigbee2mqtt-defaults
       hostNetwork: true
+  volumeClaimTemplates:
+    - metadata:
+        name: zigbee2mqtt-data
+        labels:
+          app: zigbee2mqtt
+      spec:
+        storageClassName: local-storage
+        accessModes:
+          - ReadWriteOnce
+        resources:
+          requests:
+            storage: 1Gi

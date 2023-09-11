@@ -3,18 +3,15 @@ apiVersion: gateway.networking.k8s.io/v1beta1
 kind: HTTPRoute
 metadata:
   name: zigbee2mqtt
-  labels:
-    gateway: http
 spec:
-  gateways:
-    allow: All
-  # hostnames:
-  #   - dudo.dev
+  parentRefs:
+    - kind: Gateway
+      name: http
+      namespace: kube-system
+  hostnames:
+    - zigbee2mqtt.dudo.dev
+    - zigbee2mqtt.marin.dev
   rules:
-    - matches:
-        - path:
-            type: Prefix
-            value: /
-      forwardTo:
-        - serviceName: zigbee2mqtt
+    - backendRefs:
+        - name: zigbee2mqtt
           port: 8080

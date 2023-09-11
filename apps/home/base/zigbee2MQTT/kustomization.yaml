@@ -4,13 +4,10 @@ kind: Kustomization
 namespace: home
 resources:
   - persistent-volume.yaml
-  - persistent-volume-claim.yaml
-  - deployment.yaml
+  - service.yaml
+  - stateful-set.yaml
   - http-route.yaml
 configMapGenerator:
-  - name: zigbee2mqtt-defaults
-    files:
-      - configuration.yaml=configuration.yaml
   - name: zigbee2mqtt-config
     envs:
       - .env

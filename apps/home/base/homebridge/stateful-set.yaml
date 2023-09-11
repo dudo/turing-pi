@@ -1,9 +1,10 @@
 ---
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: homebridge
 spec:
+  serviceName: homebridge
   replicas: 1
   selector:
     matchLabels:
@@ -15,7 +16,6 @@ spec:
     spec:
       containers:
         - name: homebridge
-          # imagePullPolicy: Always # TODO: We're using latest, so we need this. Uncomment when stable
           image: homebridge/homebridge:latest
           envFrom:
             - configMapRef:
@@ -29,8 +29,17 @@ spec:
           securityContext:
             privileged: true
           resources: {}
-      volumes:
-        - name: homebridge-data
-          persistentVolumeClaim:
-            claimName: homebridge
       hostNetwork: true
+  volumeClaimTemplates:
+    - metadata:
+        name: homebridge-data
+      spec:
+        storageClassName: local-storage
+        accessModes:
+          - ReadWriteOnce
+        resources:
+          requests:
+            storage: 1Gi
+        selector:
+          matchLabels:
+            app: homebridge
