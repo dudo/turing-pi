@@ -4,9 +4,8 @@ kind: Service
 metadata:
   name: homebridge
 spec:
-  clusterIP: None
   selector:
     app: homebridge
   ports:
-    - port: 8080
+    - port: 80
       targetPort: ui

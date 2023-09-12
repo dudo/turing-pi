@@ -9,12 +9,12 @@ cloudflare:
       service: http://10.112.13.29:80
     - hostname: "dudo.dev"
       service: http://10.112.13.29:80
-# securityContext:
-#   allowPrivilegeEscalation: true
-#   capabilities:
-#     add:
-#       - NET_RAW
-#       - NET_BIND_SERVICE
+securityContext:
+  capabilities:
+    add:
+      - NET_RAW
+      - NET_BIND_SERVICE
+  # allowPrivilegeEscalation: true
 image:
   tag: "2023.8.2"
 replicaCount: 1
