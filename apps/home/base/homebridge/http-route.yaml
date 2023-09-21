@@ -10,7 +10,6 @@ spec:
       namespace: kube-system
   hostnames:
     - homebridge.dudo.dev
-    - homebridge.marin.dev
   rules:
     - backendRefs:
         - name: homebridge

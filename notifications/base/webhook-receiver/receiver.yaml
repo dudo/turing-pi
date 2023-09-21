@@ -2,7 +2,7 @@
 apiVersion: notification.toolkit.fluxcd.io/v1
 kind: Receiver
 metadata:
-  name: webhook-receiver
+  name: flux-webhook
   namespace: flux-system
 spec:
   type: github
@@ -10,9 +10,11 @@ spec:
     - "ping"
     - "push"
   secretRef:
-    name: webhook-token # TODO: add once we support secret manager IaC
+    name: flux-webhook-token
   resources:
     - kind: GitRepository
       name: flux-system
-    # - kind: GitRepository
-    #   name: sample-graphql-federated-gateway
+    - kind: GitRepository
+      name: sample-red
+    - kind: GitRepository
+      name: sample-blue

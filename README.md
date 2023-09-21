@@ -127,6 +127,7 @@ kubectl run busybox --image=busybox --restart=Never --rm -it -- sh
 <https://github.com/bitnami-labs/sealed-secrets/blob/main/docs/bring-your-own-certificates.md>
 
 ```sh
+encoded_string=$(echo -n "This is a string" | base64)
 encoded_string=$(base64 <<EOF
   This is a
   multi-line string

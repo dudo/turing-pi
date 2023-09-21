@@ -10,7 +10,6 @@ spec:
       namespace: kube-system
   hostnames:
     - zigbee2mqtt.dudo.dev
-    - zigbee2mqtt.marin.dev
   rules:
     - backendRefs:
         - name: zigbee2mqtt

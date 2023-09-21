@@ -10,7 +10,6 @@ spec:
       namespace: kube-system
   hostnames:
     - whoami.dudo.dev
-    - whoami.marin.dev
   rules:
     - backendRefs:
         - name: whoami
