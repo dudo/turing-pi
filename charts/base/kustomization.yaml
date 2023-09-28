@@ -8,3 +8,5 @@ resources:
   - nvidia-device-plugin
   - grafana
   - cloudflare-tunnel
+  - cert-manager
+  - redpanda
