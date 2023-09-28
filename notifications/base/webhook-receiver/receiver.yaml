@@ -15,6 +15,6 @@ spec:
     - kind: GitRepository
       name: flux-system
     - kind: GitRepository
-      name: sample-red
+      name: red
     - kind: GitRepository
-      name: sample-blue
+      name: blue
