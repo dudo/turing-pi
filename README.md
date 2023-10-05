@@ -120,6 +120,9 @@ When spinning up the cluster for the first time, there are 3 primary steps.
 
     <https://docs.cilium.io/en/stable/gettingstarted/k8s-install-default/>
 
+    - [System Requirements](https://docs.cilium.io/en/stable/operations/system_requirements/#admin-system-reqs)
+    - [Rebuilding the Linux Kernel](https://gist.github.com/dudo/7d853fd54f2d3db6e5e44b8b59ae12d5)
+
     ```sh
     cilium install --version 1.14.2
     cilium status --wait
