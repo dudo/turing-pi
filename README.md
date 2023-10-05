@@ -66,7 +66,13 @@ An open-source system for automating deployment, scaling, and management of cont
 
 Used to **pull** repository changes into kubernetes clusters.
 
-<https://fluxcd.io>
+<https://fluxcd.io/>
+
+### Cilium
+
+Used for providing, securing, and observing network connectivity between workloads, powered by eBPF.
+
+<https://cilium.io/>
 
 ### Brew
 
@@ -82,49 +88,75 @@ brew bundle
 
 ## Usage
 
-### Kubernetes
+### Bootstrap
+
+When spinning up the cluster for the first time, there are 3 primary steps.
+
+1. Install `k0s`
+
+    <https://docs.k0sproject.io/v1.28.2+k0s.0/k0sctl-install/>
+
+    ```sh
+    k0sctl apply --config ./clusters/overlays/local/k0s.yaml
+    k0sctl kubeconfig --config ./clusters/overlays/local/k0s.yaml
+    # add the output of this to ~/.kube/config
+    ```
+
+2. Bootstrap `flux`
+
+    <https://fluxcd.io/flux/installation/bootstrap/github/>
+
+    ```sh
+    flux bootstrap github \
+      --components-extra=image-reflector-controller,image-automation-controller \
+      --owner=dudo \
+      --repository=turing-pi \
+      --private=false \
+      --personal=true \
+      --path=clusters/overlays/local
+    ```
+
+3. Install `cilium`
+
+    <https://docs.cilium.io/en/stable/gettingstarted/k8s-install-default/>
+
+    ```sh
+    cilium install --version 1.14.2
+    cilium status --wait
+    ```
+
+### kubectl
 
 <https://kubernetes.io/docs/reference/kubectl/cheatsheet/>
 
-### Flux CLI
-
-#### Bootstrap
-
-When spinning up an env for the first time (you should never really need to do this, unless locally):
-
 ```sh
-flux bootstrap github \
-  --components-extra=image-reflector-controller,image-automation-controller \
-  --owner=dudo \
-  --repository=turing-pi \
-  --private=false \
-  --personal=true \
-  --path=clusters/overlays/local
-```
-
-#### Useful Commands
-
-```sh
-flux suspend image update my-service
-flux resume image update my-service
-flux reconcile source git flux-system
-flux reconcile kustomization flux-system
-flux reconcile kustomization charts
-
-kubectl logs -n flux-system deploy/image-automation-controller
-
-flux get all -A
 kubectl get GitRepository -n flux-system
 kubectl get Kustomization -n flux-system
 kubectl get HelmRelease -n blue
+kubectl logs -n flux-system deploy/image-automation-controller
 
 kubectl run curl --image=curlimages/curl --restart=Never --rm -it -- sh
 kubectl run busybox --image=busybox --restart=Never --rm -it -- sh
 ```
 
-### Sealed Secrets
+### flux
 
-<https://github.com/bitnami-labs/sealed-secrets/blob/main/docs/bring-your-own-certificates.md>
+<https://fluxcd.io/flux/cmd/>
+
+```sh
+flux get all -A
+
+flux suspend image update my-service
+flux resume image update my-service
+
+flux reconcile source git flux-system
+flux reconcile kustomization flux-system
+flux reconcile kustomization charts
+```
+
+### kubeseal
+
+<https://github.com/bitnami-labs/sealed-secrets>
 
 ```sh
 encoded_string=$(echo -n "This is a string" | base64)
@@ -145,6 +177,18 @@ data:
   my.file: ${encoded_string}
 EOF
 ```
+
+### Reset
+
+Tearing down the cluster is a 1 step process.
+
+1. Reset the cluster
+
+   <https://docs.k0sproject.io/v1.28.2+k0s.0/reset/>
+
+   ```sh
+   k0sctl reset --config ./clusters/overlays/local/k0s.yaml
+   ```
 
 ## Pertinent Sections
 
