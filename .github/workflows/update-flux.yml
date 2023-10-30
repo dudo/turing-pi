@@ -8,9 +8,10 @@ on:
 jobs:
   components:
     runs-on: ubuntu-latest
-    env:
-      BRANCH: update-flux
-      INSTALL_LOCATION: ./clusters/flux-system/gotk-components.yaml
+    strategy:
+      matrix:
+        overlay:
+          - local
     steps:
       - name: Check out code
         uses: actions/checkout@v3
@@ -23,13 +24,14 @@ jobs:
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git config --global user.name "github-actions[bot]"
       - name: Checkout branch
+        env:
+          BRANCH: update-flux-${{ matrix.overlay }}
         run: |
           (git checkout $BRANCH && git pull) || git checkout -b $BRANCH
       - name: Check for updates
         id: update
         run: |
-          flux install \
-            --export > $INSTALL_LOCATION
+          flux install --export > ./clusters/overlays/${{ matrix.overlay }}/flux-system/gotk-components.yaml
           echo "flux_version=$(flux -v)" >> $GITHUB_OUTPUT
       - name: Commit
         continue-on-error: true
