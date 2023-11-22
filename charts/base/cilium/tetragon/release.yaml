@@ -1,0 +1,24 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: tetragon
+spec:
+  releaseName: tetragon
+  targetNamespace: kube-system
+  chart:
+    spec:
+      chart: tetragon
+      sourceRef:
+        kind: HelmRepository
+        name: cilium
+        namespace: flux-system
+      version: "^1.0.0"
+  interval: 12h
+  install:
+    createNamespace: true
+    remediation:
+      retries: 3
+  valuesFrom:
+    - kind: ConfigMap
+      name: tetragon-values
