@@ -17,3 +17,6 @@ coverage
 /tmp/*
 !/log/.keep
 !/tmp/.keep
+
+# Ignore brew
+Brewfile.lock.json
