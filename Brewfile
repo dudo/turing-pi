@@ -1,5 +1,10 @@
 # frozen_string_literal: true
 
+tap 'siderolabs/talos'
+brew 'siderolabs/talos/talosctl'
+
+brew 'crane'
+
 tap 'metalbear-co/mirrord'
 brew 'metalbear-co/mirrord/mirrord'
 
