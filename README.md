@@ -56,6 +56,18 @@ mindmap
 
 <https://turingpi.com/>
 
+#### Flashing Nodes
+
+```sh
+ssh turingpi
+cd /mnt/sdcard
+
+curl -k https://firmware.turingpi.com/turing-rk1/ubuntu_22.04_rockchip_linux/v1.32/ubuntu-22.04.3-preinstalled-desktop-arm64-turing-rk1_v1.32.img.xz -o ubuntu-22.04.3-preinstalled-desktop-arm64-turing-rk1_v1.32.img.xz
+xz -d  ubuntu-22.04.3-preinstalled-desktop-arm64-turing-rk1_v1.32.img.xz
+
+tpi flash -n N -i /mnt/sdcard/ubuntu-22.04.3-preinstalled-server-arm64-turing-rk1_v1.32.img
+```
+
 ### Kubernetes (via k0s)
 
 An open-source system for automating deployment, scaling, and management of containerized applications.
