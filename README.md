@@ -17,10 +17,6 @@ mindmap
       home
         homebridge
         zigbee2MQTT
-      sample
-        red
-        blue
-        whoami
     charts
       cert manager
       cilium
