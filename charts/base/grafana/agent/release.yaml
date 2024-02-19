@@ -2,18 +2,18 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta2
 kind: HelmRelease
 metadata:
-  name: grafana-agent-operator
+  name: grafana-agent
 spec:
-  releaseName: grafana-agent-operator
+  releaseName: grafana-agent
   targetNamespace: grafana
   chart:
     spec:
-      chart: grafana-agent-operator
+      chart: grafana-agent
       sourceRef:
         kind: HelmRepository
         name: grafana
         namespace: flux-system
-      version: "^0.3.0"
+      version: "^0.32.0"
   interval: 12h
   install:
     createNamespace: true
@@ -21,4 +21,4 @@ spec:
       retries: 3
   valuesFrom:
     - kind: ConfigMap
-      name: grafana-agent-operator-values
+      name: grafana-agent-values

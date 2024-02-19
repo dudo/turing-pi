@@ -1,1 +1,6 @@
+# https://github.com/grafana/agent/blob/main/operations/helm/charts/grafana-agent/values.yaml
 ---
+agent:
+  configMap:
+    create: false
+    name: grafana-agent-config

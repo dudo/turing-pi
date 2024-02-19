@@ -5,8 +5,13 @@ namespace: flux-system
 resources:
   - release.yaml
 configMapGenerator:
-  - name: grafana-agent-operator-values
+  - name: grafana-agent-values
     files:
       - values.yaml=values.yaml
+  - name: grafana-agent-config
+    files:
+      - config.river
+    options:
+      disableNameSuffixHash: true
 components:
   - ../../../components/configurations
