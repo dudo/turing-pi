@@ -111,7 +111,19 @@ When spinning up the cluster for the first time, there are 3 primary steps.
     # add the output of this to ~/.kube/config
     ```
 
-2. Bootstrap `flux`
+2. Install `cilium`
+
+    <https://docs.cilium.io/en/stable/gettingstarted/k8s-install-default/>
+
+    - [System Requirements](https://docs.cilium.io/en/stable/operations/system_requirements/#admin-system-reqs)
+    - [Rebuilding the Linux Kernel](https://gist.github.com/dudo/7d853fd54f2d3db6e5e44b8b59ae12d5)
+
+    ```sh
+    cilium install --version 1.15.1
+    cilium status --wait
+    ```
+
+3. Bootstrap `flux`
 
     <https://fluxcd.io/flux/installation/bootstrap/github/>
 
@@ -123,18 +135,6 @@ When spinning up the cluster for the first time, there are 3 primary steps.
       --private=false \
       --personal=true \
       --path=clusters/overlays/local
-    ```
-
-3. Install `cilium`
-
-    <https://docs.cilium.io/en/stable/gettingstarted/k8s-install-default/>
-
-    - [System Requirements](https://docs.cilium.io/en/stable/operations/system_requirements/#admin-system-reqs)
-    - [Rebuilding the Linux Kernel](https://gist.github.com/dudo/7d853fd54f2d3db6e5e44b8b59ae12d5)
-
-    ```sh
-    cilium install --version 1.15.1
-    cilium status --wait
     ```
 
 ### kubectl
