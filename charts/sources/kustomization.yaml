@@ -4,7 +4,13 @@ kind: Kustomization
 namespace: flux-system
 resources:
   - cilium.yaml
-  - sealed-secrets.yaml
-  - grafana.yaml
-  - nvidia-device-plugin.yaml
   - cloudflare.yaml
+  - grafana.yaml
+  - jetstack.yaml
+  # - metrics-server.yaml # This is included with k0s
+  - node-feature-discovery.yaml
+  - nvidia-device-plugin.yaml
+  # - postgres-operator.yaml
+  - redpanda.yaml
+  - sealed-secrets.yaml
+  - zilla.yaml

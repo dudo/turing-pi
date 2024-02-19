@@ -1,0 +1,6 @@
+# https://github.com/kubernetes-sigs/node-feature-discovery/blob/master/deployment/helm/node-feature-discovery/values.yaml
+---
+image:
+  repository: gcr.io/k8s-staging-nfd/node-feature-discovery
+  pullPolicy: IfNotPresent
+  tag: v0.15.1

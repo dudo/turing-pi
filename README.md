@@ -16,7 +16,6 @@ mindmap
     apps
       home
         homebridge
-        waterstream
         zigbee2MQTT
       sample
         red
@@ -27,6 +26,8 @@ mindmap
       cilium
       cloudflare tunnel
       grafana
+      MQTT
+      node feature discovery
       nvidia device plugin
       postgres
       redpanda

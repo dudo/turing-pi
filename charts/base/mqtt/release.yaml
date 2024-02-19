@@ -2,18 +2,18 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta2
 kind: HelmRelease
 metadata:
-  name: redpanda
+  name: mqtt
 spec:
-  releaseName: redpanda
-  targetNamespace: redpanda
+  releaseName: mqtt
+  targetNamespace: mqtt
   chart:
     spec:
-      chart: operator
+      chart: zilla
       sourceRef:
         kind: HelmRepository
-        name: redpanda
+        name: zilla
         namespace: flux-system
-      version: "^0.4.19"
+      version: "^0.9.68"
   interval: 12h
   install:
     createNamespace: true
@@ -21,4 +21,4 @@ spec:
       retries: 3
   valuesFrom:
     - kind: ConfigMap
-      name: redpanda-values
+      name: mqtt-values

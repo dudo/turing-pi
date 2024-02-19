@@ -2,18 +2,18 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta2
 kind: HelmRelease
 metadata:
-  name: redpanda
+  name: node-feature-discovery
 spec:
-  releaseName: redpanda
-  targetNamespace: redpanda
+  releaseName: node-feature-discovery
+  targetNamespace: node-feature-discovery
   chart:
     spec:
-      chart: operator
+      chart: node-feature-discovery
       sourceRef:
         kind: HelmRepository
-        name: redpanda
+        name: node-feature-discovery
         namespace: flux-system
-      version: "^0.4.19"
+      version: "^0.2.1"
   interval: 12h
   install:
     createNamespace: true
@@ -21,4 +21,4 @@ spec:
       retries: 3
   valuesFrom:
     - kind: ConfigMap
-      name: redpanda-values
+      name: node-feature-discovery-values

@@ -22,4 +22,4 @@ spec:
             - key: tp2.turingpi.com/slot
               operator: In
               values:
-                - "4"
+                - "2"

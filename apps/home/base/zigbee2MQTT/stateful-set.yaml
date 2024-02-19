@@ -26,8 +26,8 @@ spec:
                   homeassistant: false
                   permit_join: true
                   mqtt:
-                    base_topic: mqtt_messages
-                    server: 'mqtt://waterstream:1883'
+                    base_topic: mqtt-messages
+                    server: 'mqtt://mqtt.mqtt.svc.cluster.local:1883'
                   serial:
                     port: /dev/ttyACM0
                   frontend: true
@@ -38,7 +38,7 @@ spec:
               mountPath: /app/data
       containers:
         - name: zigbee2mqtt
-          image: koenkk/zigbee2mqtt
+          image: koenkk/zigbee2mqtt:1.35.3
           envFrom:
             - configMapRef:
                 name: zigbee2mqtt-config

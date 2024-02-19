@@ -4,5 +4,4 @@ kind: Kustomization
 resources:
   - namespace.yaml
   - homebridge
-  # - zigbee2MQTT
-  # - waterstream
+  - zigbee2MQTT
