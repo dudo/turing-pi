@@ -5,47 +5,45 @@ metadata:
 spec:
   # https://github.com/k0sproject/k0sctl#host-fields
   hosts:
-    # - ssh:
-    #     address: 192.168.4.54
-    #     user: dudo
-    #     port: 22
-    #     keyPath: ~/.ssh/id_rsa
-    #   role: controller+worker
-    #   noTaints: true
-    #   installFlags:
-    #     - --labels="tp2.turingpi.com/slot=1"
-    # - ssh:
-    #     address: 192.168.4.55
-    #     user: dudo
-    #     port: 22
-    #     keyPath: ~/.ssh/id_rsa
-    #   role: controller+worker
-    #   noTaints: true
-    #   installFlags:
-    #     - --labels="tp2.turingpi.com/slot=2"
-    # - ssh:
-    #     address: 192.168.4.56
-    #     user: dudo
-    #     port: 22
-    #     keyPath: ~/.ssh/id_rsa
-    #   role: controller+worker
-    #   noTaints: true
-    #   installFlags:
-    #     - --labels="tp2.turingpi.com/slot=3"
+    - ssh:
+        address: 192.168.4.78
+        user: dudo
+        port: 22
+        keyPath: ~/.ssh/id_rsa
+      role: controller+worker
+      installFlags:
+        - --labels="tp2.turingpi.com/slot=1"
+        - --disable-components=kube-proxy
+    - ssh:
+        address: 192.168.4.79
+        user: dudo
+        port: 22
+        keyPath: ~/.ssh/id_rsa
+      role: worker
+      installFlags:
+        - --labels="tp2.turingpi.com/slot=2,kubernetes.io/role=worker"
+    - ssh:
+        address: 192.168.4.80
+        user: dudo
+        port: 22
+        keyPath: ~/.ssh/id_rsa
+      role: worker
+      installFlags:
+        - --labels="tp2.turingpi.com/slot=3,kubernetes.io/role=worker"
     - ssh:
         address: 192.168.4.53
         user: dudo
         port: 22
         keyPath: ~/.ssh/id_rsa
-      role: single
+      role: worker
       installFlags:
-        - --labels="tp2.turingpi.com/slot=4"
+        - --labels="tp2.turingpi.com/slot=4,kubernetes.io/role=worker"
   k0s:
-    version: 1.27.5+k0s.0
-    dynamicConfig: false
+    version: 1.29.1+k0s.1
+    versionChannel: stable
     config:
       apiVersion: k0s.k0sproject.io/v1beta1
-      kind: Cluster
+      kind: ClusterConfig
       metadata:
         name: k0s
       spec:
@@ -63,10 +61,10 @@ spec:
           adminPort: 8133
           agentPort: 8132
         network:
+          provider: custom
           kubeProxy:
             disabled: true
           podCIDR: 10.244.0.0/16
-          provider: custom
           serviceCIDR: 10.96.0.0/12
         podSecurityPolicy:
           defaultPolicy: 00-k0s-privileged

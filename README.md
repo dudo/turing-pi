@@ -94,7 +94,7 @@ When spinning up the cluster for the first time, there are 3 primary steps.
 
 1. Install `k0s`
 
-    <https://docs.k0sproject.io/v1.28.2+k0s.0/k0sctl-install/>
+    <https://docs.k0sproject.io/v1.29.1+k0s.1/k0sctl-install/>
 
     ```sh
     k0sctl apply --config ./clusters/overlays/local/k0s.yaml
@@ -124,7 +124,7 @@ When spinning up the cluster for the first time, there are 3 primary steps.
     - [Rebuilding the Linux Kernel](https://gist.github.com/dudo/7d853fd54f2d3db6e5e44b8b59ae12d5)
 
     ```sh
-    cilium install --version 1.14.2
+    cilium install --version 1.15.1
     cilium status --wait
     ```
 
