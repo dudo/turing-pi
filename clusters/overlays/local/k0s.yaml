@@ -21,7 +21,7 @@ spec:
         keyPath: ~/.ssh/id_rsa
       role: worker
       installFlags:
-        - --labels="tp2.turingpi.com/slot=2,kubernetes.io/role=worker"
+        - --labels="tp2.turingpi.com/slot=2"
     - ssh:
         address: 192.168.4.80
         user: dudo
@@ -29,7 +29,7 @@ spec:
         keyPath: ~/.ssh/id_rsa
       role: worker
       installFlags:
-        - --labels="tp2.turingpi.com/slot=3,kubernetes.io/role=worker"
+        - --labels="tp2.turingpi.com/slot=3"
     - ssh:
         address: 192.168.4.53
         user: dudo
@@ -37,9 +37,9 @@ spec:
         keyPath: ~/.ssh/id_rsa
       role: worker
       installFlags:
-        - --labels="tp2.turingpi.com/slot=4,kubernetes.io/role=worker"
+        - --labels="tp2.turingpi.com/slot=4"
   k0s:
-    version: 1.29.1+k0s.1
+    version: 1.29.2+k0s.0
     versionChannel: stable
     config:
       apiVersion: k0s.k0sproject.io/v1beta1

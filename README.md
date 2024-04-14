@@ -65,11 +65,11 @@ xz -d  ubuntu-22.04.3-preinstalled-desktop-arm64-turing-rk1_v1.32.img.xz
 tpi flash -n N -i /mnt/sdcard/ubuntu-22.04.3-preinstalled-server-arm64-turing-rk1_v1.32.img
 ```
 
-### Kubernetes (via k0s)
+### Kubernetes (via k3s)
 
 An open-source system for automating deployment, scaling, and management of containerized applications.
 
-<https://k0sproject.io/>
+<https://docs.k3s.io/>
 
 ### Flux
 
@@ -101,14 +101,28 @@ brew bundle
 
 When spinning up the cluster for the first time, there are 3 primary steps.
 
-1. Install `k0s`
+1. Install `k3s`
 
-    <https://docs.k0sproject.io/v1.29.1+k0s.1/k0sctl-install/>
+    <https://docs.turingpi.com/docs/turing-pi2-kubernetes-installation>
+    <https://docs.k3s.io/installation/configuration>
+    <https://docs.k3s.io/installation/network-options>
 
     ```sh
-    k0sctl apply --config ./clusters/overlays/local/k0s.yaml
-    k0sctl kubeconfig --config ./clusters/overlays/local/k0s.yaml
-    # add the output of this to ~/.kube/config
+    # Controller
+    curl -sfL https://get.k3s.io | sh -s - \
+    --write-kubeconfig-mode 644 \
+    --token toooookkkkeeennnnnnn \
+    --node-ip 192.168.4.78 \
+    --flannel-backend=none \
+    --disable-cloud-controller \
+    --disable-kube-proxy \
+    --disable-network-policy \
+    --disable local-storage \
+    --disable servicelb \
+    --disable traefik
+
+    # Workers
+    curl -sfL https://get.k3s.io | K3S_URL=https://192.168.4.78:6443 K3S_TOKEN=toooookkkkeeennnnnnn sh -
     ```
 
 2. Install `cilium`
@@ -189,18 +203,6 @@ data:
   my.file: ${encoded_string}
 EOF
 ```
-
-### Reset
-
-Tearing down the cluster is a 1 step process.
-
-1. Reset the cluster
-
-   <https://docs.k0sproject.io/v1.28.2+k0s.0/reset/>
-
-   ```sh
-   k0sctl reset --config ./clusters/overlays/local/k0s.yaml
-   ```
 
 ## Pertinent Sections
 
