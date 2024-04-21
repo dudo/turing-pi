@@ -6,8 +6,8 @@ resources:
   - cilium.yaml
   - cloudflare.yaml
   - grafana.yaml
+  - hashicorp.yaml
   - jetstack.yaml
-  # - metrics-server.yaml # This is included with k0s
   - node-feature-discovery.yaml
   - nvidia-device-plugin.yaml
   # - postgres-operator.yaml

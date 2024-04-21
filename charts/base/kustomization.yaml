@@ -5,12 +5,11 @@ resources:
   - ../sources
   - cert-manager
   - cilium
-  - cloudflare-tunnel
-  - grafana
-  # - metrics-server # This is included with k0s
+  # - cloudflare-tunnel
+  # - grafana
   - mqtt
   - node-feature-discovery
   - nvidia-device-plugin
   # - postgres # I'm not ready to install this yet. Need to work out storage. Longhorn?
   - redpanda
-  - sealed-secrets
+  - vault

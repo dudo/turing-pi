@@ -2,7 +2,7 @@
 apiVersion: source.toolkit.fluxcd.io/v1beta2
 kind: HelmRepository
 metadata:
-  name: sealed-secrets
+  name: hashicorp
 spec:
   interval: 24h
-  url: https://bitnami-labs.github.io/sealed-secrets
+  url: https://helm.releases.hashicorp.com

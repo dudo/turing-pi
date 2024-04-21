@@ -27,7 +27,7 @@ mindmap
       nvidia device plugin
       postgres
       redpanda
-      sealed secrets
+      vault
     manifests
       GatewayClass
       Gateway
@@ -109,10 +109,14 @@ When spinning up the cluster for the first time, there are 3 primary steps.
 
     ```sh
     # Controller
+
+    export K3S_TOKEN=$(uuidgen)
+    export CONTROLLER_IP=192.168.4.78
+
     curl -sfL https://get.k3s.io | sh -s - \
     --write-kubeconfig-mode 644 \
-    --token toooookkkkeeennnnnnn \
-    --node-ip 192.168.4.78 \
+    --token $K3S_TOKEN \
+    --node-ip $CONTROLLER_IP \
     --flannel-backend=none \
     --disable-cloud-controller \
     --disable-kube-proxy \
@@ -122,7 +126,14 @@ When spinning up the cluster for the first time, there are 3 primary steps.
     --disable traefik
 
     # Workers
-    curl -sfL https://get.k3s.io | K3S_URL=https://192.168.4.78:6443 K3S_TOKEN=toooookkkkeeennnnnnn sh -
+
+    export K3S_TOKEN=
+    export K3S_URL=https://$CONTROLLER_IP:6443
+
+    curl -sfL https://get.k3s.io | sh -
+
+    # optional check to ensure a node is fully operational
+    k3s check-config
     ```
 
 2. Install `cilium`
@@ -133,7 +144,7 @@ When spinning up the cluster for the first time, there are 3 primary steps.
     - [Rebuilding the Linux Kernel](https://gist.github.com/dudo/7d853fd54f2d3db6e5e44b8b59ae12d5)
 
     ```sh
-    cilium install --version 1.15.1
+    cilium install --version 1.15.4
     cilium status --wait
     ```
 
@@ -161,8 +172,7 @@ kubectl get Kustomization -n flux-system
 kubectl get HelmRelease -n blue
 kubectl logs -n flux-system deploy/image-automation-controller
 
-kubectl run curl --image=curlimages/curl --restart=Never --rm -it -- sh
-kubectl run busybox --image=busybox --restart=Never --rm -it -- sh
+kubectl debug POD -it --image=busybox
 ```
 
 ### flux

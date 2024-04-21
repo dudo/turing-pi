@@ -2,22 +2,23 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta2
 kind: HelmRelease
 metadata:
-  name: metrics-server
+  name: vault
 spec:
-  releaseName: metrics-server
-  targetNamespace: kube-system
+  releaseName: vault
+  targetNamespace: vault
   chart:
     spec:
-      chart: metrics-server
+      chart: vault
       sourceRef:
         kind: HelmRepository
-        name: metrics-server
+        name: hashicorp
         namespace: flux-system
-      version: "^3.8.2"
+      version: "^0.28.0"
   interval: 12h
   install:
+    createNamespace: true
     remediation:
       retries: 3
   valuesFrom:
     - kind: ConfigMap
-      name: metrics-server-values
+      name: vault-values

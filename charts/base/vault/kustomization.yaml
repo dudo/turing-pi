@@ -5,8 +5,8 @@ namespace: flux-system
 resources:
   - release.yaml
 configMapGenerator:
-  - name: sealed-secrets-values
+  - name: vault-values
     files:
       - values.yaml=values.yaml
 components:
-  - ../../components/configurations
+  - ../../../components/configurations
